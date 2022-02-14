@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         otherKey: 'gameId',
         foreignKey: 'gameShelfId'
         }
-        Gameshelf.belongsToMany(models.Lesson, columnMapping);
+        Gameshelf.belongsToMany(models.Game, columnMapping);
   };
   return Gameshelf;
 };
