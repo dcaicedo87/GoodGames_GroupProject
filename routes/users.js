@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
 const { asyncHandler, csrfProtection } = require('./utils');
-const db = require('../db/models')
+const db = require('../db/models');
 const { check, validationResult } = require('express-validator')
 const bcrypt = require('bcryptjs');
+const { loginUser } = require('../auth');
 
 const userValidators = [
   check('username')
@@ -84,8 +85,16 @@ router.post('/register', csrfProtection, userValidators, asyncHandler(async (req
     const hashedPass = await bcrypt.hash(password, 11);
     user.hashedPass = hashedPass;
     await user.save();
-    // TODO add login middleware
-    res.redirect('/')
-  }
+    loginUser(req, res, user);
+    res.redirect('/');
+  } else {
+    const errors = validatorErrors.array().map((error) => error.msg);
+    res.render('user-register', {
+        title: "Register",
+        user,
+        errors,
+        csrfToken: req.csrfToken()
+    });
+  };
 }));
 module.exports = router;
