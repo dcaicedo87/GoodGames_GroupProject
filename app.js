@@ -10,7 +10,7 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 
 const app = express();
-//subtle change//
+//subtle changes//
 // view engine setup
 app.set("view engine", "pug");
 
