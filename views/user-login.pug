@@ -15,6 +15,8 @@ html(lang="en")
                 input(type="hidden" name="_csrf" value=csrfToken)
                 +field("Username", "username", "")
                 +field("Password","password", "", 'password')
-                div
-                    button(type="submit") Login
-                    a(href="/") Cancel
+                div(class="loginBtnContainer")
+                    button(class="loginBtn" type="submit") Login
+                div(class='cancelBtnContainer')
+                    a(href="/")
+                        button(type="button") Cancel

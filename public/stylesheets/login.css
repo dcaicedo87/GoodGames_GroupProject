@@ -1,8 +1,29 @@
 .logInForm {
   display: flex;
   justify-content: center;
+  align-items: center;
   height: 100vh;
 }
 
 form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-inline: 2%;
+}
+
+.loginBtnContainer {
+  display: flex;
+  flex-direction: column;
+  margin-inline: 38%;
+  margin-top: 2%;
+  margin-left: 15%;
+}
+.cancelBtnContainer {
+  display: flex;
+  flex-direction: column;
+  margin-inline: 28%;
+  margin-top: 2%;
 }
