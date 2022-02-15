@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: rgba(137, 43, 226, 0.301);
 }
 
 form {
@@ -12,6 +13,7 @@ form {
 
 .form-group {
   margin-inline: 2%;
+  margin-bottom: 10%;
 }
 
 .loginBtnContainer {
@@ -20,10 +22,11 @@ form {
   margin-inline: 38%;
   margin-top: 2%;
   margin-left: 15%;
+  margin-bottom: 10%;
 }
 .cancelBtnContainer {
   display: flex;
   flex-direction: column;
-  margin-inline: 28%;
+  margin-inline: 27%;
   margin-top: 2%;
 }
