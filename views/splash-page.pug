@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+      block head
+        title="GGames"
+        link(rel='stylesheet' href='/stylesheets/index.css')
+  body(class='splashPage')
+    div(class='splashBtnsContainer')
+      a(href='/users/login')
+        button(class='splashBtns') Login
+      a(href='/users/register')
+        button(class='splashBtns') Signup
+      a(href='/')
+        button(class='splashBtns') See Games
+    //- block content

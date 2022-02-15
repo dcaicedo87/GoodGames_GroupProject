@@ -1,3 +1,45 @@
 h1 {
-    color: #555555;
+  color: #555555;
+}
+
+.splashPage {
+  display: flex;
+  background-image: url(https://drive.google.com/uc?id=1-PqyFYv0hiY_RQrktdnoRp3C_8MvvWkL);
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.splashBtnsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.splashBtns {
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 1em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: rgb(181, 159, 240);
+  text-align: center;
+  transition: all 0.2s;
+  background-color: rgba(145, 119, 217, 0.294);
+}
+
+.splashBtns:hover {
+  color: rgb(238, 255, 6);
+  background-color: rgba(183, 146, 218, 0.5);
+}
+
+@media all and (max-width: 30em) {
+  .splashBtns {
+    display: block;
+    margin: 0.4em auto;
+  }
 }
