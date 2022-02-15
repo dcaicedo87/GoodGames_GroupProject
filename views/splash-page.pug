@@ -3,9 +3,10 @@ html
   head
       block head
         title="GGames"
-        link(rel='stylesheet' href='/stylesheets/reset.css')
-  body
-    button Login
-    button Signup
-    button See Games
-    block content
+        link(rel='stylesheet' href='/stylesheets/index.css')
+  body(class='splashPage')
+    div(class='splashBtnsContainer')
+      button(class='splashBtns') Login
+      button(class='splashBtns') Signup
+      button(class='splashBtns') See Games
+    //- block content
