@@ -20,21 +20,21 @@ h1 {
 .splashBtns {
   display: inline-block;
   padding: 0.35em 1.2em;
-  border: 0.1em solid #ffffff;
   margin: 0 0.3em 0.3em 0;
-  border-radius: 0.12em;
+  border-radius: 1em;
   box-sizing: border-box;
   text-decoration: none;
   font-family: "Roboto", sans-serif;
   font-weight: 300;
-  color: #ffffff;
+  color: rgb(190, 170, 245);
   text-align: center;
   transition: all 0.2s;
+  background-color: rgba(145, 119, 217, 0.294);
 }
 
 .splashBtns:hover {
-  color: #000000;
-  background-color: #ffffff;
+  color: rgb(238, 255, 6);
+  background-color: rgba(183, 146, 218, 0.5);
 }
 
 @media all and (max-width: 30em) {
