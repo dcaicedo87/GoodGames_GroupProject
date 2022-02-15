@@ -4,5 +4,19 @@ html
       block head
         title="GGames"
         link(rel='stylesheet' href='/stylesheets/reset.css')
+        link(rel="stylesheet", href="/stylesheets/navbar.css")
   body
+    .header
+        .emptyDiv
+        .logoContainer
+            img(class="ggLogo" src="https://drive.google.com/uc?id=1kNYQyaTFr6Dohp5-3FVVTpm-fDy2b1Gs", alt="GGLogo")
+        .userLinks
+          if locals.authenticated
+            form(action="/users/logout" method="post")
+              button(class="userNavButtons" type="submit") Logout
+          else
+            form(action="/users/login" method="get")
+              button(class="userNavButtons" type="submit") Login
+            form(action="/users/register" method="get")
+              button(class="userNavButtons" type="submit") Register
     block content
