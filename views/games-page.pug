@@ -1,4 +1,7 @@
 extends layout
 
 block content
-    
+    div(class='game-container-wrapper')
+        each game in games
+            div(class='game-container-list-div game-container-list-div-hover')
+                img(class='game-container-img' src= game.url, alt= 'Game Photo')

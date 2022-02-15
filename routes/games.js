@@ -4,8 +4,10 @@ const { asyncHandler, csrfProtection } = require("./utils");
 const db = require("../db/models");
 const { requireAuth } = require("../auth");
 
-router.get("/", (req, res) => {
+router.get("/", asyncHandler(async(req, res) => {
   const user = res.locals.user;
-  res.render("games-page", { user });
-});
+  const games = await db.Game.findAll({ order: [['title', 'ASC']]})
+  res.render("games-page", { user, games });
+}));
+
 module.exports = router;
