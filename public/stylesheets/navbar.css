@@ -1,14 +1,32 @@
 .ggLogo {
     height: 70px;
 }
-
 .header {
     display: flex;
     background-color: rgb(40, 22, 90);
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
 }
-
 .logoContainer {
     display: inline-block;
     margin: 7px 0px 7px 0;
+    justify-self: center;
+}
+.userNavButtons {
+    background-color: rgba(0, 0, 0, 0);
+    border: white 1px solid;
+    border-radius: 9px;
+    padding: 10px;
+    margin: 0px 5px 0px 5px;
+    color: white;
+}
+
+.userLinks {
+    display: flex;
+    transition: 0s background-color;
+}
+
+.userNavButtons:hover {
+    background-color: rgba(183, 146, 218, 0.5);
+
 }
