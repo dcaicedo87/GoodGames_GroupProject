@@ -4,12 +4,16 @@ html
       block head
         title="GGames"
         link(rel='stylesheet' href='/stylesheets/index.css')
+        link(rel="stylesheet", href="/stylesheets/navbar.css")
   body(class='splashPage')
-    div(class='splashBtnsContainer')
-      a(href='/users/login')
-        button(class='splashBtns') Login
-      a(href='/users/register')
-        button(class='splashBtns') Signup
-      a(href='/games')
-        button(class='splashBtns') See Games
+    .pageElements
+      .splashLogo
+        img(class="ggLogoSplash" src="https://drive.google.com/uc?id=1kNYQyaTFr6Dohp5-3FVVTpm-fDy2b1Gs", alt="GGLogo")
+      div(class='splashBtnsContainer')
+        a(href='/users/login')
+          button(class='splashBtns') Login
+        a(href='/users/register')
+          button(class='splashBtns') Signup
+        a(href='/games')
+          button(class='splashBtns') See Games
     //- block content
