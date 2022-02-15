@@ -11,8 +11,9 @@ html(lang="en")
     body
         div(class='logInForm-container')
             div(class='logInForm')
-                +validationErrorSummary(errors)
                 form(action="/users/login" method="post")
+                    div(class='validator-error-summary-wrapper')
+                        +validationErrorSummary(errors)
                     input(type="hidden" name="_csrf" value=csrfToken)
                     lable(class="username-label") Username
                     +field("", "username", "")
