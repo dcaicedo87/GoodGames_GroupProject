@@ -9,7 +9,10 @@ h1 {
   justify-content: center;
   height: 100vh;
 }
-
+.ggLogoSplash {
+    width: 400px;
+    margin-bottom: 20px;
+}
 .splashBtnsContainer {
   display: flex;
   flex-direction: column;
