@@ -5,6 +5,7 @@ const db = require("../db/models");
 const { requireAuth } = require("../auth");
 
 router.get("/", (req, res) => {
-  res.render("games-page");
+  const user = res.locals.user;
+  res.render("games-page", { user });
 });
 module.exports = router;
