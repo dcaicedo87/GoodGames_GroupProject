@@ -1,115 +1,122 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap");
-
-body {
-  margin: 0;
-  width: 100vw;
+.logInForm-container {
   height: 100vh;
-  background: #ffffff;
   display: flex;
-  align-items: center;
-  text-align: center;
   justify-content: center;
-  place-items: center;
-  overflow: hidden;
-  font-family: poppins;
+  align-items: center;
+  background-image: url("https://drive.google.com/uc?id=1tApIV2-VJsFNd78ZNH4E-4tK9FLMIbeY");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
-.container {
-  position: relative;
-  width: 350px;
-  height: 500px;
-  border-radius: 20px;
-  padding: 40px;
-  box-sizing: border-box;
-  background: #ecf0f3;
-  box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+.logInForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  background-color: rgba(137, 43, 226, 0.397);
+  border: solid 1px;
+  width: 55%;
 }
 
-.brand-logo {
-  height: 100px;
-  width: 100px;
-  background: url("https://img.icons8.com/color/100/000000/twitter--v2.png");
-  margin: auto;
-  border-radius: 50%;
-  box-sizing: border-box;
-  box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
+.validator-error-summary-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
 }
 
-.brand-title {
-  margin-top: 10px;
-  font-weight: 900;
-  font-size: 1.8rem;
-  color: #1da1f2;
-  letter-spacing: 1px;
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.inputs {
-  text-align: left;
-  margin-top: 30px;
+.form-group {
+  margin-bottom: 10%;
 }
 
-label,
-input,
-button {
+.username-label {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
   display: block;
-  width: 100%;
-  padding: 0;
-  border: none;
-  outline: none;
+  float: left;
+  font-size: xx-large;
+}
+.password-label {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  display: block;
+  float: left;
+  font-size: xx-large;
+}
+
+.loginBtnContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cancelBtnContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10%;
+  align-items: center;
+}
+.loginBtn {
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 1em;
   box-sizing: border-box;
-}
-
-label {
-  margin-bottom: 4px;
-}
-
-label:nth-of-type(2) {
-  margin-top: 12px;
-}
-
-input::placeholder {
-  color: gray;
-}
-
-input {
-  background: #ecf0f3;
-  padding: 10px;
-  padding-left: 20px;
-  height: 50px;
-  font-size: 14px;
-  border-radius: 50px;
-  box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
-}
-
-button {
-  margin-top: 20px;
-  background: #1da1f2;
-  height: 40px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: 900;
-  box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
-  transition: 0.5s;
-}
-
-button:hover {
-  box-shadow: none;
-}
-
-a {
-  position: absolute;
-  font-size: 8px;
-  bottom: 4px;
-  right: 4px;
   text-decoration: none;
-  color: black;
-  background: yellow;
-  border-radius: 10px;
-  padding: 2px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: rgb(130, 2, 134);
+  text-align: center;
+  transition: all 0.2s;
+  background-color: rgba(145, 119, 217, 0.294);
+  font-size: 26px;
 }
 
-h1 {
-  position: absolute;
-  top: 0;
-  left: 0;
-} */
+.loginBtn:hover {
+  color: rgb(238, 255, 6);
+  background-color: rgba(183, 146, 218, 0.5);
+}
+
+.loginBtn:active {
+  color: #bbbbbb;
+  border-color: #bbbbbb;
+}
+.cancelBtn {
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 1em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: rgb(130, 2, 134);
+  text-align: center;
+  transition: all 0.2s;
+  background-color: rgba(145, 119, 217, 0.294);
+}
+
+.cancelBtn:hover {
+  color: rgb(238, 255, 6);
+  background-color: rgba(183, 146, 218, 0.5);
+}
+
+.cancelBtn:active {
+  color: #bbbbbb;
+  border-color: #bbbbbb;
+}
+
+@media all and (max-width: 30em) {
+  .loginBtn {
+    display: block;
+    margin: 0.4em auto;
+  }
+}
