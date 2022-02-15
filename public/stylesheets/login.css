@@ -14,7 +14,7 @@
   justify-content: center;
   align-items: center;
   height: 50vh;
-  background-color: rgb(137, 43, 226);
+  background-color: rgba(137, 43, 226, 0.397);
   border: solid 1px;
   width: 55%;
 }
@@ -64,7 +64,7 @@ form {
   text-decoration: none;
   font-family: "Roboto", sans-serif;
   font-weight: 300;
-  color: rgb(49, 0, 185);
+  color: rgb(130, 2, 134);
   text-align: center;
   transition: all 0.2s;
   background-color: rgba(145, 119, 217, 0.294);
@@ -89,7 +89,7 @@ form {
   text-decoration: none;
   font-family: "Roboto", sans-serif;
   font-weight: 300;
-  color: rgb(49, 0, 185);
+  color: rgb(130, 2, 134);
   text-align: center;
   transition: all 0.2s;
   background-color: rgba(145, 119, 217, 0.294);
