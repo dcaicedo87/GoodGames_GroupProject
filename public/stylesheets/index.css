@@ -10,8 +10,8 @@ h1 {
   height: 100vh;
 }
 .ggLogoSplash {
-    width: 400px;
-    margin-bottom: 20px;
+  width: 400px;
+  margin-bottom: 20px;
 }
 .splashBtnsContainer {
   display: flex;

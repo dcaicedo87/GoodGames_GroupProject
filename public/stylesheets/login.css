@@ -1,32 +1,113 @@
+.logInForm-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("https://drive.google.com/uc?id=1tApIV2-VJsFNd78ZNH4E-4tK9FLMIbeY");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
 .logInForm {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: rgba(137, 43, 226, 0.301);
+  height: 50vh;
+  background-color: rgb(137, 43, 226);
+  border: solid 1px;
+  width: 55%;
 }
 
 form {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .form-group {
-  margin-inline: 2%;
   margin-bottom: 10%;
+}
+
+.username-label {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  display: block;
+  float: left;
+  font-size: xx-large;
+}
+.password-label {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  display: block;
+  float: left;
+  font-size: xx-large;
 }
 
 .loginBtnContainer {
   display: flex;
   flex-direction: column;
-  margin-inline: 38%;
-  margin-top: 2%;
-  margin-left: 15%;
-  margin-bottom: 10%;
+  align-items: center;
 }
 .cancelBtnContainer {
   display: flex;
   flex-direction: column;
-  margin-inline: 27%;
-  margin-top: 2%;
+  margin-top: 10%;
+  align-items: center;
+}
+.loginBtn {
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 1em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: rgb(49, 0, 185);
+  text-align: center;
+  transition: all 0.2s;
+  background-color: rgba(145, 119, 217, 0.294);
+  font-size: 26px;
+}
+
+.loginBtn:hover {
+  color: rgb(238, 255, 6);
+  background-color: rgba(183, 146, 218, 0.5);
+}
+
+.loginBtn:active {
+  color: #bbbbbb;
+  border-color: #bbbbbb;
+}
+.cancelBtn {
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 1em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: rgb(49, 0, 185);
+  text-align: center;
+  transition: all 0.2s;
+  background-color: rgba(145, 119, 217, 0.294);
+}
+
+.cancelBtn:hover {
+  color: rgb(238, 255, 6);
+  background-color: rgba(183, 146, 218, 0.5);
+}
+
+.cancelBtn:active {
+  color: #bbbbbb;
+  border-color: #bbbbbb;
+}
+
+@media all and (max-width: 30em) {
+  .loginBtn {
+    display: block;
+    margin: 0.4em auto;
+  }
 }
