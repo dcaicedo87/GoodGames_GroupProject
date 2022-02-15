@@ -6,7 +6,10 @@ html
         link(rel='stylesheet' href='/stylesheets/index.css')
   body(class='splashPage')
     div(class='splashBtnsContainer')
-      button(class='splashBtns') Login
-      button(class='splashBtns') Signup
-      button(class='splashBtns') See Games
+      a(href='/users/login')
+        button(class='splashBtns') Login
+      a(href='/users/register')
+        button(class='splashBtns') Signup
+      a(href='/')
+        button(class='splashBtns') See Games
     //- block content
