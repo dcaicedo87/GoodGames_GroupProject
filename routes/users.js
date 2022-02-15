@@ -142,7 +142,7 @@ router.post(
     }
     res.render("user-login", {
       title: "Login",
-      email,
+      username,
       errors,
       csrfToken: req.csrfToken(),
     });
