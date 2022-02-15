@@ -1,0 +1,14 @@
+.ggLogo {
+    height: 70px;
+}
+
+.header {
+    display: flex;
+    background-color: rgb(40, 22, 90);
+    justify-content: center;
+}
+
+.logoContainer {
+    display: inline-block;
+    margin: 7px 0px 7px 0;
+}

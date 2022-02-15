@@ -5,6 +5,6 @@ const db = require("../db/models");
 const { requireAuth } = require("../auth");
 
 router.get("/", requireAuth, (req, res) => {
-  res.send("You are AUTHORIZED");
+  res.render("games-page");
 });
 module.exports = router;
