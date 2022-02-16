@@ -18,6 +18,11 @@ block content
                             .game-info-review-underline
                     form(action="/reviews" method="post")
                         p.game-info-review-label.fontClass  Leave a review
-                        textarea(class="game-info-review-textarea" rows="4" cols="70")
-                        button(class="game-info-review-submit" type="submit") Submit Review
+                        if locals.authenticated
+                            textarea(class="game-info-review-textarea" rows="4" cols="70")
+                            input(type="hidden" name="userId" value=`${user.id}`)
+                            input(type="hidden" name="gameId" value=`${game.id}`)
+                            button(class="game-info-review-submit" type="submit") Submit Review
+                        else
+                            p Login/Signup to leave a review!
     script(src="/javascripts/game-info.js")

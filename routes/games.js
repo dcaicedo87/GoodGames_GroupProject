@@ -36,7 +36,7 @@ router.get("/:id", asyncHandler(async (req, res) => {
    review.newTime = newTime
  });
 
-  res.render("game-info", { game, reviews })
+  res.render("game-info", { game, reviews, user })
   // const reviewContent = game.Reviews[0].content;
   // const username = game.Reviews[0].User.username;
   // const reviewContent = game.Reviews[0].content;
