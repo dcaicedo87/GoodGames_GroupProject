@@ -1,10 +1,9 @@
 .game-info-wrapper {
     display: flex;
     flex-direction: column;
-    /* justify-content: left; */
     align-items: center;
     border: .5px solid rgb(197, 197, 197);
-    background-color: rgba(241, 241, 241, .5);
+    background-color: rgb(214, 214, 214);
     border-radius: 9px;
     width: 50vw;
 }
@@ -25,5 +24,9 @@
     border: .5px solid rgb(197, 197, 197);
     border-radius: 9px;
     padding: 10px;
+    background-color: white;
 
+}
+.game-info-page {
+    background-color: rgb(89,61,163);
 }
