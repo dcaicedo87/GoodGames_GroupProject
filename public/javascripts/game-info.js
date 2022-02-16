@@ -24,7 +24,8 @@ window.addEventListener("load", async (event)=>{
         username,
         createdAt,
        } = review
-
+       let newTime = createdAt.toString();
+       console.log(createdAt);
     //    console.log(createdAt);
        const newHTML = `
        <p class="game-info-review-username fontClass">${username}: </p>
@@ -33,6 +34,6 @@ window.addEventListener("load", async (event)=>{
        <div class="game-info-review-underline"></div>
        `;
        const reviewWrapper= document.getElementById("reviewWrapper");
-       reviewWrapper.innerHTML += newHTML; 
+       reviewWrapper.innerHTML += newHTML;
    });
 });

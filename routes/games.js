@@ -29,12 +29,7 @@ router.get("/:id", csrfProtection, asyncHandler(async (req, res) => {
       },
   })
   const reviews = game.Reviews;
-  // console.log(reviews);
- const reviews2 = reviews.map(review => {
-   const time = review.createdAt.toString();
-   const newTime = time.slice(0, 16);
-   review.newTime = newTime
- });
+
 
   res.render("game-info", { game, reviews, user, csrfToken: req.csrfToken() })
   // const reviewContent = game.Reviews[0].content;
