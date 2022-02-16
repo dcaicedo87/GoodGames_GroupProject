@@ -3,38 +3,34 @@ var router = express.Router();
 const { asyncHandler, csrfProtection } = require("./utils");
 const db = require("../db/models");
 const { requireAuth } = require("../auth");
-const { Review, User } = require("../db/models");
+const { Category, Game } = require("../db/models");
 
-router.get(
-  "/",
-  asyncHandler(async (req, res) => {
-    const user = res.locals.user;
-    const games = await db.Game.findAll({ order: [["title", "ASC"]] });
-    res.render("games-page", { user, games });
-  })
-);
+// router.get(
+//   "/",
+//   asyncHandler(async (req, res) => {
+//     const user = res.locals.user;
+//     const games = await db.Game.findAll({ order: [["title", "ASC"]] });
+//     res.render("games-page", { user, games });
+//   })
+// );
 
 router.get("/:id", async (req, res) => {
   const id = req.params.id;
-  const user = res.locals.user;
-  const game = await db.Game.findByPk(id, {
+  const categories = await db.Category.findByPk(id, {
     include: {
-      model: Review,
+      model: Game,
       where: {
-        gameId: id,
-      },
-      include: {
-        model: User,
-        where: {
-          id,
-        },
+        genreId: id,
       },
     },
   });
-  const reviewContent = game.Reviews[0].content;
-  const username = game.Reviews[0].User.username;
-  // const reviewContent = game.Reviews[0].content;
-  res.render("game-info", { game, reviewContent, username });
+  console.log(categories.Games[0].id);
+
+  //   const gameTitle = categories.Games[0].title;
+  //   const gameUrl = categories.Games[0].url;
+  //   const gameId = categories.Games[0].id;
+
+  res.render("category-filter-page", { categories });
 });
 
 module.exports = router;

@@ -21,11 +21,11 @@ block content
                     a(href='/categories/7')
                         button(class="game-sidebar-button") Casual Sandbox
         div(class='game-container-wrapper')
-            each game in games
+            each category in categories
                 div(class='game-container-div game-container-div-hover')
-                    img(class='game-container-img' src= game.url, alt= 'Game Photo')
+                    img(class='game-container-img' src= category.Games.url, alt= 'Game Photo')
                     div(class='game-text-container')
-                        div(class='game-container-game-title')= `${game.title}`
-                        form(action=`/games/${game.id}` method="get")
+                        div(class='game-container-game-title')= `${category.Games.title}`
+                        form(action=`/games/${category.Games.id}` method="get")
                         button(class="game-info-button" type="submit") Learn More
     script(src='/javascripts/category.js')
