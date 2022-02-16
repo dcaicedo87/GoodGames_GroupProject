@@ -4,20 +4,20 @@ const { check, validationResult } = require("express-validator");
 const { asyncHandler, csrfProtection } = require("./utils");
 const db = require("../db/models");
 
-router.post('/', csrfProtection, asyncHandler(async (req, res) => {
+router.post('/', asyncHandler(async (req, res) => {
     const {
         content,
-        userId,
         gameId
-    } = req.body;
+    } = req.body
+    const user = res.locals.user;
+    const userId = user.id;
     const newReview = await db.Review.create({
         content,
-        userId,
-        gameId
+        gameId,
+        userId
     });
+    res.json({ newReview })
 }));
-
-
 
 
 

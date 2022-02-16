@@ -16,14 +16,14 @@ block content
                             p.game-info-review-content.fontClass #{review.content}
                             p.game-info-review-timestamp.fontClass #{review.createdAt}
                             .game-info-review-underline
-                    form(action="/reviews" method="post")
+                    form(action="" method="post" onsubmit="event.preventDefault();")
                         p.game-info-review-label.fontClass  Leave a review
                         if locals.authenticated
                             input(type="hidden" name="_csrf" value=csrfToken)
-                            textarea(class="game-info-review-textarea" name="content" rows="4" cols="70")
+                            textarea(class="game-info-review-textarea" id="game-info-review-textarea" name="content" rows="4" cols="70")
                             input(type="hidden" name="userId" value=`${user.id}`)
                             input(type="hidden" name="gameId" value=`${game.id}`)
-                            button(class="game-info-review-submit" type="submit") Submit Review
+                            button(class="game-info-review-submit" id=`${game.id}` type="submit") Submit Review
                         else
                             p Login/Signup to leave a review!
     script(src="/javascripts/game-info.js")
