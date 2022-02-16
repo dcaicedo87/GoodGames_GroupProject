@@ -5,6 +5,9 @@ h1 {
 .splashPage {
   display: flex;
   background-image: url(https://drive.google.com/uc?id=1-PqyFYv0hiY_RQrktdnoRp3C_8MvvWkL);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
   align-items: center;
   justify-content: center;
   height: 100vh;
