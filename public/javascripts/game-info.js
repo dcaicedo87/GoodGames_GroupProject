@@ -25,14 +25,14 @@ window.addEventListener("load", async (event)=>{
         createdAt,
        } = review
 
-       console.log(content, username, createdAt);
     //    console.log(createdAt);
-    //    const newHTML = `
-    //    <p class="game-info-review-username fontClass">${username}: </p>
-    //    <p class="game-info-review-content fontClass">${content} </p>
-    //    <p class="game-info-review-timestamp fontClass"> #
-    //     .game-info-review-underline
-    //    `;
-
+       const newHTML = `
+       <p class="game-info-review-username fontClass">${username}: </p>
+       <p class="game-info-review-content fontClass">${content} </p>
+       <p class="game-info-review-timestamp fontClass">${createdAt} </p>
+       <div class="game-info-review-underline"></div>
+       `;
+       const reviewWrapper= document.getElementById("reviewWrapper");
+       reviewWrapper.innerHTML += newHTML; 
    });
 });
