@@ -20,19 +20,19 @@
     margin: 0px 5px 0px 5px;
     color: white;
 }
-
 .userLinks {
     display: flex;
     transition: 0s background-color;
     align-items: center;
 }
-
 .userNavButtons:hover {
     background-color: rgba(183, 146, 218, 0.5);
 
 }
-
 .usernameText {
     color: white;
     margin-right: 20px;
+}
+.emptyDiv {
+    width: 10vw;
 }
