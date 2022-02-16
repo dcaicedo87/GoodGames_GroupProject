@@ -9,13 +9,16 @@ router.post('/', asyncHandler(async (req, res) => {
         content,
         gameId
     } = req.body
+
     const user = res.locals.user;
     const userId = user.id;
-    const newReview = await db.Review.create({
+    const username = user.username;
+    let newReview = await db.Review.create({
         content,
         gameId,
         userId
     });
+    newReview.dataValues.username = username;
     res.json({ newReview })
 }));
 
