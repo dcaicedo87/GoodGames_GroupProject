@@ -10,6 +10,11 @@ block content
                     img(src=`${game.url}`, alt=`${game.title}`)
                 .game-info-description-wrapper
                     p.game-info-metaScore MetaScore: #{game.metaScore}
+                    .game-info-add-comment
+                        p.game-info-add-comment-text Add Comment
                     .game-info-review-wrapper
-                        p.game-info-review-username #{username}:
-                        p.game-info-review-content #{reviewContent}
+                        each review in reviews
+                            p.game-info-review-username #{review.User.username}:
+                            p.game-info-review-content #{review.content}
+                            p.game-info-review-timestamp #{review.createdAt}
+                            .game-info-review-underline

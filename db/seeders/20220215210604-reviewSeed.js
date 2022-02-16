@@ -9,6 +9,8 @@ module.exports = {
           { content: "WHY THIS GMEA BAD?!", userId: 1, gameId: 4, createdAt: new Date(), updatedAt: new Date()},
           { content: "Meh?", userId: 1, gameId: 2, createdAt: new Date(), updatedAt: new Date()},
           { content: "This isn't publix", userId: 1, gameId: 1, createdAt: new Date(), updatedAt: new Date()},
+          { content: "Momma said games are bad", userId: 1, gameId: 1, createdAt: new Date(), updatedAt: new Date()},
+          { content: "Momma said games are good!", userId: 1, gameId: 1, createdAt: new Date(), updatedAt: new Date()},
 
         ],
       {}

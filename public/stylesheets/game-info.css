@@ -30,3 +30,6 @@
 .game-info-page {
     background-color: rgb(89,61,163);
 }
+.game-info-review-underline {
+    border-bottom: 1px solid black;
+}

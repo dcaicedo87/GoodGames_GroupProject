@@ -12,7 +12,7 @@ router.get("/", asyncHandler(async(req, res) => {
   res.render("games-page", { user, games });
 }));
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", asyncHandler(async (req, res) => {
   const id = req.params.id
   const user = res.locals.user;
   const game = await db.Game.findByPk(id, {
@@ -24,17 +24,22 @@ router.get("/:id", async (req, res) => {
         },
         include: {
           model: User,
-          where: {
-            id
-          }
         }
       },
   })
-  const reviewContent = game.Reviews[0].content;
-  const username = game.Reviews[0].User.username;
+  const reviews = game.Reviews;
+  // console.log(reviews);
+ const reviews2 = reviews.map(review => {
+   const time = review.createdAt.toString();
+   const newTime = time.slice(0, 16);
+   review.newTime = newTime
+ });
+ 
+  res.render("game-info", { game, reviews })
   // const reviewContent = game.Reviews[0].content;
-  res.render("game-info", { game, reviewContent, username })
-});
+  // const username = game.Reviews[0].User.username;
+  // const reviewContent = game.Reviews[0].content;
+}));
 
 
 module.exports = router;
