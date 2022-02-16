@@ -43,13 +43,26 @@ body {
   grid-template-columns: 1fr 6fr;
 }
 
-.game-sidebar-label {
+.game-sidebar-categories-label {
   display: flex;
   justify-content: center;
   color: yellow;
 }
 
-.game-sidebar-ul {
+.game-sidebar-gameshel-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-sidebar-gameshelf-label {
+  /* display: flex;
+  justify-content: center; */
+  color: yellow;
+  font-size: xx-large;
+}
+
+.game-sidebar-categories-ul {
   font-size: xx-large;
   display: flex;
   flex-direction: column;

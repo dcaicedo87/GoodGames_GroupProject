@@ -4,8 +4,8 @@ block content
     div(class='game-container-container')
         div(class='game-sidebar-wrapper')
             div(class='game-sidebar-categories')
-                ul(class='game-sidebar-ul' id="")
-                    label(class="game-sidebar-label") Categories
+                ul(class='game-sidebar-categories-ul' id="")
+                    label(class="game-sidebar-categories-label") Categories
                     a(href='/categories/1')
                         button(class="game-sidebar-button") Action Adventure
                     a(href='/categories/2')
@@ -20,6 +20,11 @@ block content
                         button(class="game-sidebar-button") Strategy/RTS
                     a(href='/categories/7')
                         button(class="game-sidebar-button") Casual Sandbox
+            div(class='game-sidebar-gameshelf-wrapper')
+                div
+                    label(class="game-sidebar-gameshelf-label") GameShelf
+                div
+                    button +
         div(class='game-container-wrapper')
             each game in games
                 div(class='game-container-div game-container-div-hover')
