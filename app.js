@@ -14,7 +14,6 @@ const { restoreUser } = require("./auth");
 const { sessionSecret } = require("./config");
 const app = express();
 //subtle changes//
-// view engine setup
 app.set("view engine", "pug");
 
 app.use(logger("dev"));
