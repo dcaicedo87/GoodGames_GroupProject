@@ -10,7 +10,7 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const gamesRouter = require("./routes/games");
 const { restoreUser } = require("./auth");
-
+const reviewsRouter = require("./routes/reviews")
 const { sessionSecret } = require("./config");
 const app = express();
 //subtle changes//
@@ -42,6 +42,7 @@ store.sync();
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/games", gamesRouter);
+app.use("/reviews", reviewsRouter); 
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

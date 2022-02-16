@@ -12,7 +12,7 @@ router.get("/", asyncHandler(async(req, res) => {
   res.render("games-page", { user, games });
 }));
 
-router.get("/:id", asyncHandler(async (req, res) => {
+router.get("/:id", csrfProtection, asyncHandler(async (req, res) => {
   const id = req.params.id
   const user = res.locals.user;
   const game = await db.Game.findByPk(id, {
@@ -36,7 +36,7 @@ router.get("/:id", asyncHandler(async (req, res) => {
    review.newTime = newTime
  });
 
-  res.render("game-info", { game, reviews, user })
+  res.render("game-info", { game, reviews, user, csrfToken: req.csrfToken() })
   // const reviewContent = game.Reviews[0].content;
   // const username = game.Reviews[0].User.username;
   // const reviewContent = game.Reviews[0].content;
