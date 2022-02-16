@@ -8,4 +8,12 @@ router.get("/", (req, res) => {
   const user = res.locals.user;
   res.render("games-page", { user });
 });
+
+router.get("/:id", async (req, res) => {
+  const id = req.params.id
+  const user = res.locals.user;
+  const game = await db.Game.findByPk(id)
+  res.render("game-info", { game, user })
+});
+
 module.exports = router;

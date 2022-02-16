@@ -1,0 +1,22 @@
+.game-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: left; */
+    align-items: center;
+    border: .5px solid rgb(197, 197, 197);
+    border-radius: 9px;
+    width: 50vw;
+}
+
+.game-info-title-wrapper {
+    display: inline-block;
+}
+.game-title {
+    margin-top: 40px;
+    display: inline-block;
+}
+.game-info-body {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}

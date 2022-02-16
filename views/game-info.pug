@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    .game-info-body
+        .game-info-wrapper
+            .game-info-title-wrapper
+                p.game-title #{game.title}
+            .game-info-image-wrapper
+                img(src=`${game.url}`, alt=`${game.title}`)
+            .game-info-description-wrapper
+                p.game-description #{game.description}
