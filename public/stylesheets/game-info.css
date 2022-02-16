@@ -21,3 +21,9 @@
     justify-content: center;
     margin-top: 50px;
 }
+.game-info-review-wrapper {
+    border: .5px solid rgb(197, 197, 197);
+    border-radius: 9px;
+    padding: 10px;
+
+}

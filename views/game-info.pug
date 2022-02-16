@@ -9,4 +9,6 @@ block content
                 img(src=`${game.url}`, alt=`${game.title}`)
             .game-info-description-wrapper
                 p.game-info-metaScore MetaScore: #{game.metaScore}
-                p.game-description #{reviewContent}
+                .game-info-review-wrapper
+                    p.game-info-review-username #{username}:
+                    p.game-info-review-content #{reviewContent}
