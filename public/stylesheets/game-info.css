@@ -33,3 +33,10 @@
 .game-info-review-underline {
     border-bottom: 1px solid black;
 }
+.game-info-add-comment {
+    display: inline-block;
+    background-color: white;
+    border-radius: 9px;
+    margin-bottom: 10px;
+    padding: 3px 8px 3px 8px;
+}

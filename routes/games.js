@@ -19,6 +19,7 @@ router.get("/:id", asyncHandler(async (req, res) => {
     include:
       {
         model: Review,
+        order: [['createdAt', 'ASC']],
         where: {
           gameId: id
         },
@@ -34,7 +35,7 @@ router.get("/:id", asyncHandler(async (req, res) => {
    const newTime = time.slice(0, 16);
    review.newTime = newTime
  });
- 
+
   res.render("game-info", { game, reviews })
   // const reviewContent = game.Reviews[0].content;
   // const username = game.Reviews[0].User.username;
