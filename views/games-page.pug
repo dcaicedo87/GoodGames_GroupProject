@@ -3,6 +3,15 @@ extends layout
 block content
     div(class='game-container-container')
         div(class='game-sidebar-wrapper')
+            div(class='game-sidebar-categories')
+                ul Categories
+                    li • Action Adventure
+                    li • RPG
+                    li • MMO
+                    li • Horror
+                    li • Sport/Sim
+                    li • Strategy/RTS
+                    li • Casual Sandbox
         div(class='game-container-wrapper')
             each game in games
                 div(class='game-container-list-div game-container-list-div-hover')
