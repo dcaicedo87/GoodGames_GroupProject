@@ -5,10 +5,12 @@ const db = require("../db/models");
 // const Review = require('../db/models')
 const { requireAuth } = require("../auth");
 const { Review, User } = require('../db/models')
-router.get("/", (req, res) => {
+
+router.get("/", asyncHandler(async(req, res) => {
   const user = res.locals.user;
-  res.render("games-page", { user });
-});
+  const games = await db.Game.findAll({ order: [['title', 'ASC']]})
+  res.render("games-page", { user, games });
+}));
 
 router.get("/:id", async (req, res) => {
   const id = req.params.id
@@ -33,5 +35,6 @@ router.get("/:id", async (req, res) => {
   // const reviewContent = game.Reviews[0].content;
   res.render("game-info", { game, reviewContent, username })
 });
+
 
 module.exports = router;
