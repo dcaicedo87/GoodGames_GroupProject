@@ -22,10 +22,10 @@ block content
                         button(class="game-sidebar-button") Casual Sandbox
         div(class='game-container-wrapper')
             each game in games
-                div(class='game-container-ast-div game-container-ast-div-hover')
+                div(class='game-container-div game-container-div-hover')
                     img(class='game-container-img' src= game.url, alt= 'Game Photo')
                     div(class='game-text-container')
-                        div(class='game-container-ast-game-title')= `${game.title}`
+                        div(class='game-container-game-title')= `${game.title}`
                         form(action=`/games/${game.id}` method="get")
                         button(class="game-info-button" type="submit") Learn More
     script(src='/javascripts/category.js')
