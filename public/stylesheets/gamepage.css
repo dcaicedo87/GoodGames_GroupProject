@@ -43,13 +43,31 @@ body {
   grid-template-columns: 1fr 6fr;
 }
 
+.game-sidebar-label {
+  display: flex;
+  justify-content: center;
+  color: yellow;
+}
+
+.game-sidebar-ul {
+  font-size: xx-large;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.game-sidebar-ul > a {
+  /* margin: 5%; */
+  text-decoration: none;
+}
+
 .game-sidebar-wrapper {
   background-color: rgb(131, 9, 131);
   color: white;
   position: relative;
   left: 0;
-  min-width: 15vh;
-  max-width: 15vh;
+  min-width: 18vh;
+  max-width: 18vh;
 }
 
 .game-container-list-div-hover > div {
@@ -66,6 +84,34 @@ body {
 .game-container-img {
   border-radius: 10% / 50%;
 }
+
+.game-sidebar-button {
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: rgb(255, 115, 0);
+  text-align: center;
+  transition: all 0.2s;
+  background-color: rgba(145, 119, 217, 0.294);
+  font-size: 13px;
+  width: 100%;
+}
+
+.game-sidebar-button:hover {
+  color: rgb(238, 255, 6);
+  background-color: rgba(183, 146, 218, 0.5);
+}
+
+.game-sidebar-button:active {
+  color: #bbbbbb;
+  border-color: #bbbbbb;
+}
+
 @-webkit-keyframes fadeInFromNone {
   0% {
     display: none;

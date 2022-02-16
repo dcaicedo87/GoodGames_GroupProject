@@ -4,19 +4,28 @@ block content
     div(class='game-container-container')
         div(class='game-sidebar-wrapper')
             div(class='game-sidebar-categories')
-                ul Categories
-                    li • Action Adventure
-                    li • RPG
-                    li • MMO
-                    li • Horror
-                    li • Sport/Sim
-                    li • Strategy/RTS
-                    li • Casual Sandbox
+                ul(class='game-sidebar-ul' id="")
+                    label(class="game-sidebar-label") Categories
+                    a(href='/users/login')
+                        button(class="game-sidebar-button") Action Adventure
+                    a(href='/users/login')
+                        button(class="game-sidebar-button") RPG
+                    a(href='/users/login')
+                        button(class="game-sidebar-button") MMO
+                    a(href='/users/login')
+                        button(class="game-sidebar-button") Horror
+                    a(href='/users/login')
+                        button(class="game-sidebar-button") Sport/Sim
+                    a(href='/users/login')
+                        button(class="game-sidebar-button") Strategy/RTS
+                    a(href='/users/login')
+                        button(class="game-sidebar-button") Casual Sandbox
         div(class='game-container-wrapper')
             each game in games
-                div(class='game-container-list-div game-container-list-div-hover')
+                div(class='game-container-ast-div game-container-ast-div-hover')
                     img(class='game-container-img' src= game.url, alt= 'Game Photo')
                     div(class='game-text-container')
-                        div(class='game-container-list-game-title')= `${game.title}`
+                        div(class='game-container-ast-game-title')= `${game.title}`
                         form(action=`/games/${game.id}` method="get")
                         button(class="game-info-button" type="submit") Learn More
+    script(src='/javascripts/category.js')
