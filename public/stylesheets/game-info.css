@@ -31,7 +31,7 @@
     background-color: rgb(89,61,163);
 }
 .game-info-review-underline {
-    border-bottom: 1px solid black;
+    border-bottom: .5px solid rgb(197, 197, 197);
 }
 .game-info-add-comment {
     display: inline-block;
@@ -39,4 +39,13 @@
     border-radius: 9px;
     margin-bottom: 10px;
     padding: 3px 8px 3px 8px;
+}
+.game-info-review-submit {
+    display: block;
+}
+.game-info-review-textarea {
+    margin-top: 10px;
+}
+.fontClass {
+    font-family: "Roboto";
 }
