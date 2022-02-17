@@ -1,5 +1,7 @@
 extends layout
 
+include utils.pug
+
 block content
     div(class='game-container-container')
         div(class='game-sidebar-wrapper')
@@ -24,13 +26,18 @@ block content
                 div
                     label(class="game-sidebar-gameshelf-label") GameShelf
                 div
-                    button(data-modal-target="#modal") Open Modal
+                    button(data-modal-target="#modal") +
                     div(class="modal" id="modal")
                         div(class="modal-header")
-                            div(class="title") Example Modal
+                            div(class="title") GameShelf
                             button(class="close-button" data-close-button="") &times;
                         div(class="modal-body")
-                            | test
+                            | Create name of GameShelf
+                            form(action='/gameshelves' method="post")
+                                input(type='hidden' name='_csrf' value=csrfToken)
+                                label Name
+                                +field("", "gameShelfName", "")
+                                button(type='submit') Submit
                     div(id="overlay")
             div(class="game-sidebar-gameshelf-list-wrapper")
             if (gameshelves)
