@@ -12,14 +12,15 @@ block content
                     p.game-info-metaScore.fontClass MetaScore: #{game.metaScore}
                     .game-info-review-wrapper(id="reviewWrapper")
                         each review in reviews
-                            .game-info-review-individual-wrapper
-                            p.game-info-review-username.fontClass #{review.User.username}:
-                            p.game-info-review-content.fontClass #{review.content}
-                            p.game-info-review-timestamp.fontClass #{review.createdAt}
-                            if user.username === review.User.username
-                                    button(class="game-info-review-delete") Delete
-                                    button(class="game-info-review-edit") Edit
-                            .game-info-review-underline
+                            div(id=`review${review.id}`)
+                                p.game-info-review-username.fontClass #{review.User.username}:
+                                p.game-info-review-content.fontClass #{review.content}
+                                p.game-info-review-timestamp.fontClass #{review.createdAt}
+                                if user
+                                    if user.username === review.User.username
+                                        button(class="game-info-review-delete" id=`review${review.id}`) Delete
+                                        button(class="game-info-review-edit") Edit
+                                .game-info-review-underline
                     form(action="" method="post" onsubmit="event.preventDefault();")
                         p.game-info-review-label.fontClass  Leave a review
                         if locals.authenticated

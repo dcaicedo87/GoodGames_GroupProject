@@ -1,6 +1,6 @@
 window.addEventListener("load", async (event)=>{
 //    const reviewButton = document.getElementById("game-info-review-button");
-   const reviewButton = document.querySelector(".game-info-review-submit")
+   const reviewButton = document.querySelector(".game-info-review-submit");
    reviewButton.addEventListener('click', async (e) => {
        const textArea = document.getElementById("game-info-review-textarea");
        const content = textArea.value;
@@ -25,15 +25,30 @@ window.addEventListener("load", async (event)=>{
         createdAt,
        } = review
        let newTime = createdAt.toString();
-       console.log(createdAt);
-    //    console.log(createdAt);
+
        const newHTML = `
        <p class="game-info-review-username fontClass">${username}: </p>
        <p class="game-info-review-content fontClass">${content} </p>
        <p class="game-info-review-timestamp fontClass">${createdAt} </p>
+       <button class="game-info-review-delete">Delete</button>
+       <button class="game-info-review-edit">Edit</button>
        <div class="game-info-review-underline"></div>
        `;
        const reviewWrapper= document.getElementById("reviewWrapper");
        reviewWrapper.innerHTML += newHTML;
+       textArea.value = "";
    });
+   const deleteButtons = document.querySelectorAll(".game-info-review-delete");
+   if (deleteButtons) {
+       deleteButtons.forEach(deleteButton => {
+
+           deleteButton.addEventListener('click', async (e) => {
+                const id = e.target.id;
+                const reviewDiv = document.getElementById(id);
+                console.log(reviewDiv);
+                reviewDiv.remove();
+           });
+       })
+
+   }
 });
