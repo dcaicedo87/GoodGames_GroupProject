@@ -16,29 +16,13 @@ const { Category, Game } = require("../db/models");
 
 router.get("/:id", async (req, res) => {
   const id = req.params.id;
-  const categories = await db.Category.findAll({
-    include: {
-      model: Game,
-      where: {
-        genreId: id,
-      },
+  const games = await db.Game.findAll({
+    where: {
+      genreId: id,
     },
   });
-  // const categories = await db.Category.findByPk(id, {
-  //   include: {
-  //     model: Game,
-  //     where: {
-  //       genreId: id,
-  //     },
-  //   },
-  // });
-  console.log(categories);
 
-  //   const gameTitle = categories.Games[0].title;
-  //   const gameUrl = categories.Games[0].url;
-  //   const gameId = categories.Games[0].id;
-
-  // res.render("category-filter-page", { categories });
+  res.render("category-filter-page", { games });
 });
 
 module.exports = router;
