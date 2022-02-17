@@ -9,6 +9,7 @@ block content
                 .game-info-image-wrapper
                     img(src=`${game.url}`, alt=`${game.title}`)
                 .game-info-description-wrapper
+                    p.game-info-developer.fontClass Developer: #{game.developer}
                     p.game-info-metaScore.fontClass MetaScore: #{game.metaScore}
                     if reviews.length > 0
                         .game-info-review-wrapper(id="reviewWrapper")

@@ -49,7 +49,7 @@ window.addEventListener("load", async (event) => {
                     const reviewDiv = document.getElementById(id);
                     const children = reviewDiv.childNodes;
                     const content = children[1];
-
+                    console.log(children);
                     // CREATING EDIT DIV
                     const editDiv = document.createElement("div");
                     editDiv.setAttribute("class", "editDiv");
@@ -65,7 +65,10 @@ window.addEventListener("load", async (event) => {
                     editDiv.appendChild(newText);
                     editDiv.appendChild(edtBtn);
                     console.log(editDiv);
-                    reviewDiv.appendChild(editDiv)
+                    if (children.length === 6) {
+                        reviewDiv.appendChild(editDiv)
+                    }
+
 
                     const editSubmits = document.querySelector('.review-edit-submit-button');
                     editSubmits.addEventListener('click', async (e) => {
