@@ -15,27 +15,40 @@ router.get("/", asyncHandler(async(req, res) => {
 router.get("/:id", csrfProtection, asyncHandler(async (req, res) => {
   const id = req.params.id
   const user = res.locals.user;
-  const game = await db.Game.findByPk(id, {
-    include:
-      {
-        model: Review,
-        order: [['createdAt', 'ASC']],
-        where: {
-          gameId: id
-        },
-        include: {
-          model: User,
-        }
-      },
-  })
-  const reviews = game.Reviews;
+  const game = await db.Game.findByPk(id)
+  // const reviews = game.Reviews
+  const reviews = await db.Review.findAll({
+    where: {
+      gameId: id
+    },
+    order: [['createdAt', 'ASC']],
+    include: {
+      model: User,
+    }
+  });
+
+  console.log(game);
+  console.log(reviews);
+
+  res.render("game-info", { game, user, reviews, csrfToken: req.csrfToken() })
 
 
-  res.render("game-info", { game, reviews, user, csrfToken: req.csrfToken() })
+
   // const reviewContent = game.Reviews[0].content;
   // const username = game.Reviews[0].User.username;
   // const reviewContent = game.Reviews[0].content;
 }));
 
-
+// include:
+//       {
+//         model: Review,
+//         order: [['createdAt', 'ASC']],
+//         where: {
+//           gameId: id
+//         },
+//         include: {
+//           model: User,
+//         }
+//       },
+//   }
 module.exports = router;
