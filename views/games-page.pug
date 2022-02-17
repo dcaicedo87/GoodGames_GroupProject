@@ -20,6 +20,18 @@ block content
                         button(class="game-sidebar-button") Strategy/RTS
                     a(href='/categories/7')
                         button(class="game-sidebar-button") Casual Sandbox
+            div(class='game-sidebar-gameshelf-wrapper')
+                div
+                    label(class="game-sidebar-gameshelf-label") GameShelf
+                div
+                    button(data-modal-target="#modal") Open Modal
+                    div(class="modal" id="modal")
+                        div(class="modal-header")
+                            div(class="title") Example Modal
+                            button(class="close-button" data-close-button="") &times;
+                        div(class="modal-body")
+                            | test
+                    div(id="overlay")
                 if (gameshelves)
                     div(class='game-sidebar-gameshelf-wrapper')
                     ul(class='game-sidebar-gameshelf-ul' id="game-sidebar-gameshelf-ul")
@@ -30,8 +42,6 @@ block content
                             div
                             form(action=`/games/gameshelf/${gameshelf.id}` method='get')
                             button(class="game-sidebar-button")= `${gameshelf.name}`
-
-
         div(class='game-container-wrapper')
             each game in games
                 div(class='game-container-list-div game-container-list-div-hover')
@@ -40,3 +50,4 @@ block content
                         div(class='game-container-game-title game-container-list-game-title')= `${game.title}`
                         form(action=`/games/${game.id}` method="get")
                         button(class="game-info-button" type="submit") Learn More
+    script(src='/javascripts/modal.js')
