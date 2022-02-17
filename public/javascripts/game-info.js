@@ -42,12 +42,12 @@ window.addEventListener("load", async (event) => {
 
                     reviewDiv.innerHTML += `
                     <div>
-                        <textarea id="review-edit-value${id}">afafaf</textarea>
+                        <textarea id="review-edit-value${id}">${content.innerText}</textarea>
                         <button id="review-edit-submit-button">Submit Edit</button>
                     </div>
                     `
                     const editSubmit = document.getElementById('review-edit-submit-button');
-                    editSubmit.addEventListener('click', (e) => {
+                    editSubmit.addEventListener('click', async (e) => {
                         let newReview = document.getElementById(`review-edit-value${id}`);
                         const content = newReview.value;
                         const data = { content }
@@ -60,7 +60,8 @@ window.addEventListener("load", async (event) => {
                                 },
                                 body: JSON.stringify(data)
                             });
-
+                            const response = await res.json();
+                            console.log(response);
                         } catch (err) {
                             console.log("Failed to edit review.");
                         }
