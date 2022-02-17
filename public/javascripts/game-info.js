@@ -65,7 +65,9 @@ window.addEventListener("load", async (event) => {
                         } catch (err) {
                             console.log("Failed to edit review.");
                         }
-
+                        children[1].innerHTML = content;
+                        newReview.remove();
+                        editSubmit.remove(); 
 
                     });
                 });

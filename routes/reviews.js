@@ -54,7 +54,7 @@ router.put('/:id', asyncHandler(async (req, res) => {
             throw err
         }
     } catch (err) {
-        const failure = "Delete failed."
+        const failure = "Edit failed."
         res.json({ failure })
     }
 }));
