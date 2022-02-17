@@ -2,9 +2,8 @@ var express = require("express");
 var router = express.Router();
 const { asyncHandler, csrfProtection } = require("./utils");
 const db = require("../db/models");
-// const Review = require('../db/models')
 const { requireAuth } = require("../auth");
-const { Review, User } = require('../db/models')
+const { User } = require('../db/models')
 
 router.get("/", asyncHandler(async(req, res) => {
   const user = res.locals.user;
@@ -16,7 +15,7 @@ router.get("/:id", csrfProtection, asyncHandler(async (req, res) => {
   const id = req.params.id
   const user = res.locals.user;
   const game = await db.Game.findByPk(id)
-  // const reviews = game.Reviews
+
   const reviews = await db.Review.findAll({
     where: {
       gameId: id
@@ -32,23 +31,6 @@ router.get("/:id", csrfProtection, asyncHandler(async (req, res) => {
 
   res.render("game-info", { game, user, reviews, csrfToken: req.csrfToken() })
 
-
-
-  // const reviewContent = game.Reviews[0].content;
-  // const username = game.Reviews[0].User.username;
-  // const reviewContent = game.Reviews[0].content;
 }));
 
-// include:
-//       {
-//         model: Review,
-//         order: [['createdAt', 'ASC']],
-//         where: {
-//           gameId: id
-//         },
-//         include: {
-//           model: User,
-//         }
-//       },
-//   }
 module.exports = router;
