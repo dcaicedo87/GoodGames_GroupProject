@@ -42,6 +42,7 @@ window.addEventListener("load", async (event)=>{
    if (deleteButtons) {
        deleteButtons.forEach(deleteButton => {
            deleteButton.addEventListener('click', async (e) => {
+               // TODO Add fetch to delete from database and display on page
                 const id = e.target.id;
                 const reviewDiv = document.getElementById(id);
                 console.log(reviewDiv);
@@ -49,5 +50,15 @@ window.addEventListener("load", async (event)=>{
            });
        })
 
+   }
+   const editButtons = document.querySelectorAll(".game-info-review-edit");
+   if (editButtons) {
+       editButtons.forEach(editButton => {
+            editButton.addEventListener('click', e => {
+                // TODO Add fetch to edit from database and display on page
+                const id = e.target.id;
+
+            });
+       });
    }
 });
