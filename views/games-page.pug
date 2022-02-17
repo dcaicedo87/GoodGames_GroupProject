@@ -32,6 +32,16 @@ block content
                         div(class="modal-body")
                             | test
                     div(id="overlay")
+                if (gameshelves)
+                    div(class='game-sidebar-gameshelf-wrapper')
+                    ul(class='game-sidebar-gameshelf-ul' id="game-sidebar-gameshelf-ul")
+                        label(class="game-sidebar-categories-label") Gameshelf
+                            a(href='/games/gameshelf/create')
+                                button(class="game-sidebar-gameshelf-button") +
+                        each gameshelf in gameshelves
+                            div
+                            form(action=`/games/gameshelf/${gameshelf.id}` method='get')
+                            button(class="game-sidebar-button")= `${gameshelf.name}`
         div(class='game-container-wrapper')
             each game in games
                 div(class='game-container-list-div game-container-list-div-hover')
