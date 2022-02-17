@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    body.game-info-page
+        .game-info-body
+            .game-info-wrapper
+                .game-info-title-wrapper
+                    p.game-title #{game.title}
+                .game-info-image-wrapper
+                    img(src=`${game.url}`, alt=`${game.title}`)
+                .game-info-description-wrapper
+                    p.game-info-metaScore MetaScore: #{game.metaScore}
+                    .game-info-review-wrapper
+                        p.game-info-review-username #{username}:
+                        p.game-info-review-content #{reviewContent}
