@@ -1,5 +1,4 @@
 window.addEventListener("load", async (event) => {
-    //    const reviewButton = document.getElementById("game-info-review-button");
 
     const grabDeleteButton = async () => {
         const deleteButtons = document.querySelectorAll(".game-info-review-delete");
@@ -30,15 +29,24 @@ window.addEventListener("load", async (event) => {
     };
     const grabEditButton = async () => {
         const editButtons = document.querySelectorAll(".game-info-review-edit");
+        const deleteButtons = document.querySelectorAll(".game-info-review-delete");
         if (editButtons) {
             editButtons.forEach(editButton => {
                 editButton.addEventListener('click', async (e) => {
+                    const editButtons = document.querySelectorAll(".game-info-review-edit");
+                    editButtons.forEach(btn => {
+                        btn.style.display = "none";
+                    })
                     editButton.style.display = "none";
+                    deleteButtons.forEach(btn => {
+                        btn.style.display = "none";
+                    });
                     const id = e.target.id;
                     const realId = id.split('w');
                     const reviewDiv = document.getElementById(id);
                     const children = reviewDiv.childNodes;
                     let content;
+                    console.log(children);
                     if (children.length === 7) {
                         content = children[3];
                     } else {
@@ -86,6 +94,9 @@ window.addEventListener("load", async (event) => {
                    });
                 });
                 editButton.style.display = "inline-block";
+                deleteButtons.forEach(deleteButton => {
+                    deleteButton.style.display = "inline-block";
+                })
             });
         };
     };
@@ -119,18 +130,52 @@ window.addEventListener("load", async (event) => {
             createdAt,
         } = review;
 
-        const newHTML = `
-       <div id=review${id}>
-        <p class="game-info-review-username fontClass">${username}: </p>
-        <p class="game-info-review-content fontClass">${content}
-        <p class="game-info-review-timestamp fontClass">${createdAt}
-        <button class="game-info-review-delete" id=review${id}>Delete</button>
-        <button class="game-info-review-edit" id=review${id}>Edit</button>
-        <div class="game-info-review-underline"></div>
-       </div>
-       `;
+        // CREATING DIV
+            const div = document.createElement("div")
+            div.setAttribute("id", `review${id}`);
+            console.log(div);
+        // CREATING FIRST P
+            const p1 = document.createElement("p")
+            p1.setAttribute("class", "game-info-review-content fontClass");
+            p1.innerText = username;
+            console.log(p1);
+        // CREATING SECOND P
+            const p2 = document.createElement("p")
+            p2.setAttribute("class", "game-info-review-content fontClass");
+            p2.innerText = content;
+            console.log(p2);
+        // CREATING THIRD P
+            const p3 = document.createElement("p")
+            p3.setAttribute("class", "game-info-review-timestamp fontClass");
+            p3.innerText = createdAt;
+            console.log(p3);
+        // CREATING DELETE BUTTON
+            const deleteBtn = document.createElement("button")
+            deleteBtn.setAttribute("class", "game-info-review-delete")
+            deleteBtn.setAttribute("id", `review${id}`);
+            deleteBtn.innerText = "Delete";
+            console.log(deleteBtn);
+        // CREATING EDIT BUTTON
+            const editBtn = document.createElement("button");
+            editBtn.setAttribute("class", "game-info-review-edit")
+            editBtn.setAttribute("id", `review${id}`);
+            editBtn.innerText = "Edit";
+            console.log(editBtn);
+        // CREATING UNDERLINE DIV
+            const underLine = document.createElement("div")
+            underLine.setAttribute("class", "game-info-review-underline");
+            console.log(underLine);
+            // div.appendChild(p1);
+            // console.log(div);
+            div.appendChild(p1);
+            div.appendChild(p2);
+            div.appendChild(p3);
+            div.appendChild(deleteBtn);
+            div.appendChild(editBtn);
+            div.appendChild(underLine);
+
         const reviewWrapper = document.getElementById("reviewWrapper");
-        reviewWrapper.innerHTML += newHTML;
+        reviewWrapper.appendChild(div);
         textArea.value = "";
         grabDeleteButton();
         grabEditButton();
