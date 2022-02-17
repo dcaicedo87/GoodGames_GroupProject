@@ -14,22 +14,32 @@ router.get("/", asyncHandler(async(req, res) => {
 router.get("/:id", csrfProtection, asyncHandler(async (req, res) => {
   const id = req.params.id
   const user = res.locals.user;
-  const game = await db.Game.findByPk(id)
-
-  const reviews = await db.Review.findAll({
-    where: {
-      gameId: id
-    },
-    order: [['createdAt', 'ASC']],
-    include: {
-      model: User,
+  try {
+    const game = await db.Game.findByPk(id)
+    const reviews = await db.Review.findAll({
+      where: {
+        gameId: id
+      },
+      order: [['createdAt', 'ASC']],
+      include: {
+        model: User,
+      }
+    });
+    if (game) {
+      res.render("game-info", { game, user, reviews, csrfToken: req.csrfToken() })
+    } else {
+      throw err
     }
-  });
 
-  console.log(game);
-  console.log(reviews);
+  } catch (err) {
+    res.send("404 Game not found :[");
+  }
 
-  res.render("game-info", { game, user, reviews, csrfToken: req.csrfToken() })
+
+
+  // console.log(game);
+  // console.log(reviews);
+
 
 }));
 
