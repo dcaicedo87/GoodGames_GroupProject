@@ -34,14 +34,43 @@ window.addEventListener("load", async (event) => {
                 editButton.addEventListener('click', async (e) => {
                     const id = e.target.id;
                     const realId = id.split('w');
+                    const reviewDiv = document.getElementById(id);
+                    const children = reviewDiv.childNodes;
+                    const content = children[1];
+                    const newText = document.createElement('input');
+                    newText.innerText = content.innerText;
+
+                    reviewDiv.innerHTML += `
+                    <div>
+                        <textarea id="review-edit-value${id}">afafaf</textarea>
+                        <button id="review-edit-submit-button">Submit Edit</button>
+                    </div>
+                    `
+                    const editSubmit = document.getElementById('review-edit-submit-button');
+                    editSubmit.addEventListener('click', (e) => {
+                        let newReview = document.getElementById(`review-edit-value${id}`);
+                        const content = newReview.value;
+                        const data = { content }
+                        console.log(realId[1]);
+                        try {
+                            const res = await fetch(`http://localhost:8080/reviews/${realId[1]}`, {
+                                method: "PUT",
+                                headers: {
+                                    "Content-Type" : "application/json"
+                                },
+                                body: JSON.stringify(data)
+                            });
+
+                        } catch (err) {
+                            console.log("Failed to edit review.");
+                        }
+
+
+                    });
                 });
             });
         };
     };
-
-
-
-
 
 
     grabEditButton();
@@ -89,14 +118,14 @@ window.addEventListener("load", async (event) => {
         grabDeleteButton();
     });
 
-    const editButtons = document.querySelectorAll(".game-info-review-edit");
-    if (editButtons) {
-        editButtons.forEach(editButton => {
-            editButton.addEventListener('click', e => {
-                // TODO Add fetch to edit from database and display on page
-                const id = e.target.id;
+    // const editButtons = document.querySelectorAll(".game-info-review-edit");
+    // if (editButtons) {
+    //     editButtons.forEach(editButton => {
+    //         editButton.addEventListener('click', e => {
+    //             // TODO Add fetch to edit from database and display on page
+    //             const id = e.target.id;
 
-            });
-        });
-    }
+    //         });
+    //     });
+    // }
 });

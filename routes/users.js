@@ -89,7 +89,7 @@ router.post(
       user.hashedPass = hashedPass;
       await user.save();
       loginUser(req, res, user);
-      res.redirect("/");
+      res.redirect("/games");
     } else {
       const errors = validatorErrors.array().map((error) => error.msg);
       res.render("user-register", {
