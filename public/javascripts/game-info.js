@@ -22,11 +22,12 @@ window.addEventListener("load", async (event) => {
                     } catch (err) {
                         console.log("Failed to delete review.");
                     };
+                    grabEditButton();
+                    grabDeleteButton();
                 });
             });
         };
     };
-
     const grabEditButton = async () => {
         const editButtons = document.querySelectorAll(".game-info-review-edit");
         if (editButtons) {
@@ -67,8 +68,9 @@ window.addEventListener("load", async (event) => {
                         }
                         children[1].innerHTML = content;
                         newReview.remove();
-                        editSubmit.remove(); 
-
+                        editSubmit.remove();
+                        grabEditButton();
+                        grabDeleteButton();
                     });
                 });
             });
@@ -119,6 +121,7 @@ window.addEventListener("load", async (event) => {
         // ADD another query selector
         textArea.value = "";
         grabDeleteButton();
+        grabEditButton();
     });
 
     // const editButtons = document.querySelectorAll(".game-info-review-edit");
