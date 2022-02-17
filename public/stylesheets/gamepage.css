@@ -58,6 +58,12 @@ img {
   justify-content: center;
   color: yellow;
 }
+
+.game-sidebar-gameshelf-list-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 /* Start of Modal */
 *,
 *::after,
