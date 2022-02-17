@@ -52,3 +52,6 @@
 .game-info-review-delete {
     margin-bottom: 10px;
 }
+.editDisplay {
+    display: inline-block;
+}

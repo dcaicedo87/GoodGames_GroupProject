@@ -20,7 +20,7 @@ block content
                                     if user
                                         if user.username === review.User.username
                                             button(class="game-info-review-delete" id=`review${review.id}`) Delete
-                                            button(class="game-info-review-edit" id=`review${review.id}`) Edit
+                                            button(class="game-info-review-edit editDisplay" id=`review${review.id}`) Edit
                                     .game-info-review-underline
                     form(action="" method="post" onsubmit="event.preventDefault();")
                         p.game-info-review-label.fontClass  Leave a review
