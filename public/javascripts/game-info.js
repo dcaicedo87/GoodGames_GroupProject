@@ -8,16 +8,23 @@ window.addEventListener("load", async (event) => {
                 deleteButton.addEventListener('click', async (e) => {
                     // TODO Add fetch to delete from database and display on page
                     const id = e.target.id;
-                    console.log(id);
+                    const realId = id.split('w');
                     try {
-                        // const res = await
-                        const reviewDiv = document.getElementById(id);
-                        reviewDiv.remove();
-                    } catch {
-
+                        const res = await fetch(`http://localhost:8080/reviews/${realId[1]}`, {
+                            method: "DELETE",
+                        });
+                        const response = await res.json();
+                        if (response.success) {
+                            const reviewDiv = document.getElementById(id);
+                            reviewDiv.remove();
+                        } else {
+                            throw err
+                        }
+                    } catch (err) {
+                        console.log("Failed to delete review.");
                     }
                 });
-            })
+            });
         }
     };
     grabDeleteButton();

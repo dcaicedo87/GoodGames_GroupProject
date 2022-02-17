@@ -23,6 +23,21 @@ router.post('/', asyncHandler(async (req, res) => {
 }));
 
 
-
+router.delete('/:id', asyncHandler(async (req, res, next) => {
+   const id = req.params.id;
+   try {
+       const review = await db.Review.findByPk(id);
+       if (review) {
+           await review.destroy();
+           const success = "Delete successful."
+           res.json({ success })
+       } else {
+           throw err
+       }
+   } catch (err) {
+    const failure = "Delete failed."
+    res.json({ failure })
+   }
+})); 
 
 module.exports = router;

@@ -31,7 +31,7 @@ router.get("/:id", csrfProtection, asyncHandler(async (req, res) => {
       throw err
     }
   } catch (err) {
-    res.render('error-pug.pug');
+    res.render('error-404');
   }
 }));
 
