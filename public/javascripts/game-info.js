@@ -27,70 +27,83 @@ window.addEventListener("load", async (event) => {
             });
         };
     };
-    const grabEditButton = async () => {
-        const editButtons = document.querySelectorAll(".game-info-review-edit");
-        const deleteButtons = document.querySelectorAll(".game-info-review-delete");
+
+    const grabEditButton = () => {
+        editButtons = document.querySelectorAll(".game-info-review-edit");
         if (editButtons) {
             editButtons.forEach(editButton => {
                 editButton.addEventListener('click', async (e) => {
+                    // Make edit buttons disappear upon clicking edit
                     const editButtons = document.querySelectorAll(".game-info-review-edit");
+                    const deleteButtons = document.querySelectorAll(".game-info-review-delete");
                     editButtons.forEach(btn => {
                         btn.style.display = "none";
                     })
-                    editButton.style.display = "none";
+                    // Make delete buttons disappear upon clicking edit
                     deleteButtons.forEach(btn => {
                         btn.style.display = "none";
                     });
+
                     const id = e.target.id;
                     const realId = id.split('w');
                     const reviewDiv = document.getElementById(id);
                     const children = reviewDiv.childNodes;
-
                     const content = children[1];
-                    const newText = document.createElement('input');
-                    newText.innerText = content.innerText;
 
-                    reviewDiv.innerHTML += `
-                    <div>
-                        <textarea id="review-edit-value${id}">${content.innerText}</textarea>
-                        <button class="review-edit-submit-button">Submit Edit</button>
-                    </div>
-                    `
-                    const editSubmits = document.querySelectorAll('.review-edit-submit-button');
-                    editSubmits.forEach(editSubmit => {
-                        editSubmit.addEventListener('click', async (e) => {
-                            let newReview = document.getElementById(`review-edit-value${id}`);
-                            const content = newReview.value;
-                            const data = { content }
-                            try {
-                                const res = await fetch(`http://localhost:8080/reviews/${realId[1]}`, {
-                                    method: "PUT",
-                                    headers: {
-                                        "Content-Type" : "application/json"
-                                    },
-                                    body: JSON.stringify(data)
-                                });
-                                const response = await res.json();
-                                console.log(response);
-                            } catch (err) {
-                                console.log("Failed to edit review.");
-                            }
-                            
-                            children[1].innerHTML = content;
-                            newReview.remove();
-                            editSubmit.remove();
-                            grabEditButton();
-                            grabDeleteButton();
-                      });
-                   });
+                    // CREATING EDIT DIV
+                    const editDiv = document.createElement("div");
+                    editDiv.setAttribute("class", "editDiv");
+                    // CREATING INPUT AREA
+                    const newText = document.createElement("textarea");
+                    newText.setAttribute("id", `review-edit-value${id}`);
+                    newText.innerText = content.innerText;
+                    // CREATING EDIT SUBMIT BUTTON
+                    const edtBtn = document.createElement("button");
+                    edtBtn.setAttribute("class", "review-edit-submit-button");
+                    edtBtn.innerText = "Submit Edit"
+                    // APPENDING CHILDREN TO DIV
+                    editDiv.appendChild(newText);
+                    editDiv.appendChild(edtBtn);
+                    console.log(editDiv);
+                    reviewDiv.appendChild(editDiv)
+
+                    const editSubmits = document.querySelector('.review-edit-submit-button');
+                    editSubmits.addEventListener('click', async (e) => {
+                        let newReview = document.getElementById(`review-edit-value${id}`);
+                        const content = newReview.value;
+                        const data = { content }
+                        try {
+                            const res = await fetch(`http://localhost:8080/reviews/${realId[1]}`, {
+                                method: "PUT",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify(data)
+                            });
+                            const response = await res.json();
+                            console.log(response);
+                        } catch (err) {
+                            console.log("Failed to edit review.");
+                        }
+                        children[1].innerHTML = content;
+                        editDiv.remove();
+                        // grabEditButton();
+
+                        // Make edit buttons disappear upon clicking edit
+                        const editButtons = document.querySelectorAll(".game-info-review-edit");
+                        editButtons.forEach(btn => {
+                            btn.style.display = "inline-block";
+                        })
+                        // Make delete buttons disappear upon clicking edit
+                        deleteButtons.forEach(btn => {
+                            btn.style.display = "inline-block";
+                        });
+
+                    });
                 });
-                editButton.style.display = "inline-block";
-                deleteButtons.forEach(deleteButton => {
-                    deleteButton.style.display = "inline-block";
-                })
             });
         };
-    };
+    }
 
 
     grabEditButton();
@@ -122,48 +135,40 @@ window.addEventListener("load", async (event) => {
         } = review;
 
         // CREATING DIV
-            const div = document.createElement("div")
-            div.setAttribute("id", `review${id}`);
-            console.log(div);
+        const div = document.createElement("div")
+        div.setAttribute("id", `review${id}`);
         // CREATING FIRST P
-            const p1 = document.createElement("p")
-            p1.setAttribute("class", "game-info-review-content fontClass");
-            p1.innerText = username;
-            console.log(p1);
+        const p1 = document.createElement("p")
+        p1.setAttribute("class", "game-info-review-content fontClass");
+        p1.innerText = username;
         // CREATING SECOND P
-            const p2 = document.createElement("p")
-            p2.setAttribute("class", "game-info-review-content fontClass");
-            p2.innerText = content;
-            console.log(p2);
+        const p2 = document.createElement("p")
+        p2.setAttribute("class", "game-info-review-content fontClass");
+        p2.innerText = content;
         // CREATING THIRD P
-            const p3 = document.createElement("p")
-            p3.setAttribute("class", "game-info-review-timestamp fontClass");
-            p3.innerText = createdAt;
-            console.log(p3);
+        const p3 = document.createElement("p")
+        p3.setAttribute("class", "game-info-review-timestamp fontClass");
+        p3.innerText = createdAt;
         // CREATING DELETE BUTTON
-            const deleteBtn = document.createElement("button")
-            deleteBtn.setAttribute("class", "game-info-review-delete")
-            deleteBtn.setAttribute("id", `review${id}`);
-            deleteBtn.innerText = "Delete";
-            console.log(deleteBtn);
+        const deleteBtn = document.createElement("button")
+        deleteBtn.setAttribute("class", "game-info-review-delete")
+        deleteBtn.setAttribute("id", `review${id}`);
+        deleteBtn.innerText = "Delete";
         // CREATING EDIT BUTTON
-            const editBtn = document.createElement("button");
-            editBtn.setAttribute("class", "game-info-review-edit")
-            editBtn.setAttribute("id", `review${id}`);
-            editBtn.innerText = "Edit";
-            console.log(editBtn);
+        const editBtn = document.createElement("button");
+        editBtn.setAttribute("class", "game-info-review-edit")
+        editBtn.setAttribute("id", `review${id}`);
+        editBtn.innerText = "Edit";
         // CREATING UNDERLINE DIV
-            const underLine = document.createElement("div")
-            underLine.setAttribute("class", "game-info-review-underline");
-            console.log(underLine);
-            // div.appendChild(p1);
-            // console.log(div);
-            div.appendChild(p1);
-            div.appendChild(p2);
-            div.appendChild(p3);
-            div.appendChild(deleteBtn);
-            div.appendChild(editBtn);
-            div.appendChild(underLine);
+        const underLine = document.createElement("div")
+        underLine.setAttribute("class", "game-info-review-underline");
+        // APPENDING ALL ELEMENTS TO DIV CONTAINER
+        div.appendChild(p1);
+        div.appendChild(p2);
+        div.appendChild(p3);
+        div.appendChild(deleteBtn);
+        div.appendChild(editBtn);
+        div.appendChild(underLine);
 
         const reviewWrapper = document.getElementById("reviewWrapper");
         reviewWrapper.appendChild(div);
