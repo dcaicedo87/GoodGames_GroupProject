@@ -41,7 +41,6 @@ window.addEventListener("load", async (event)=>{
    const deleteButtons = document.querySelectorAll(".game-info-review-delete");
    if (deleteButtons) {
        deleteButtons.forEach(deleteButton => {
-
            deleteButton.addEventListener('click', async (e) => {
                 const id = e.target.id;
                 const reviewDiv = document.getElementById(id);
