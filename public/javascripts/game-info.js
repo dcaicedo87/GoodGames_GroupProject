@@ -45,14 +45,8 @@ window.addEventListener("load", async (event) => {
                     const realId = id.split('w');
                     const reviewDiv = document.getElementById(id);
                     const children = reviewDiv.childNodes;
-                    let content;
-                    console.log(children);
-                    if (children.length === 7) {
-                        content = children[3];
-                    } else {
-                        content = children[1];
-                    }
-                    // const content = children[1];
+
+                    const content = children[1];
                     const newText = document.createElement('input');
                     newText.innerText = content.innerText;
 
@@ -81,11 +75,8 @@ window.addEventListener("load", async (event) => {
                             } catch (err) {
                                 console.log("Failed to edit review.");
                             }
-                            if (children.length === 9) {
-                                children[3].innerHTML = content;
-                            } else {
-                                children[1].innerHTML = content;
-                            }
+                            
+                            children[1].innerHTML = content;
                             newReview.remove();
                             editSubmit.remove();
                             grabEditButton();
