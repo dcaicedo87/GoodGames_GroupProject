@@ -5,42 +5,46 @@ const { asyncHandler, csrfProtection } = require("./utils");
 const db = require("../db/models");
 // const Review = require('../db/models')
 const { requireAuth } = require("../auth");
-const { Review, User } = require('../db/models')
+const { Review, User } = require("../db/models");
 
-router.get("/", asyncHandler(async(req, res) => {
-  const user = res.locals.user;
-  const games = await db.Game.findAll({ order: db.sequelize.random()})
-
-  if (user)
-  {
-    const gameshelves = await db.Gameshelf.findAll({where: { userId: `${user.id}` }});
-    res.render("games-page", { user, games, gameshelves });
-  }
-  else {
-      res.render("games-page", { user, games });
-  }
-
-
-}));
+router.get(
+  "/",
+  csrfProtection,
+  asyncHandler(async (req, res) => {
+    const user = res.locals.user;
+    const games = await db.Game.findAll({ order: db.sequelize.random() });
+    if (user) {
+      const gameshelves = await db.Gameshelf.findAll({
+        where: { userId: `${user.id}` },
+      });
+      res.render("games-page", {
+        user,
+        games,
+        gameshelves,
+        csrfToken: req.csrfToken(),
+      });
+    } else {
+      res.render("games-page", { user, games, csrfToken: req.csrfToken() });
+    }
+  })
+);
 
 router.get("/:id", async (req, res) => {
-  const id = req.params.id
+  const id = req.params.id;
   const user = res.locals.user;
   const game = await db.Game.findByPk(id, {
-    include:
-      {
-        model: Review,
-        where: {
-          gameId: id
-        },
-        include: {
-          model: User,
-          where: {
-            id
-          }
-        }
+    include: {
+      model: Review,
+      where: {
+        gameId: id,
       },
-  })
+      include: {
+        model: User,
+        where: {
+          id,
+        },
+      },
+  }})
 
 
 const reviewContent = game.Reviews[0].content;
@@ -49,7 +53,7 @@ const username = game.Reviews[0].User.username;
 
 
   // const reviewContent = game.Reviews[0].content;
-  res.render("game-info", { game, reviewContent, username })
+  res.render("game-info", { game, reviewContent, username });
 });
 
 // router.get("/gameshelf/create", csrfProtection, ((req, res) => {
@@ -84,7 +88,6 @@ router.get("/gameshelf/:id", async(req, res) => {
 
 
 });
-
 
 module.exports = router;
 // router.get("/register", csrfProtection, (req, res) => {

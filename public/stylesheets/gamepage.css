@@ -90,6 +90,7 @@ img {
   background-color: white;
   width: 500px;
   max-width: 80%;
+  color: black;
 }
 
 .modal.active {
