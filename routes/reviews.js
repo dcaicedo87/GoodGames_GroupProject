@@ -23,7 +23,7 @@ router.post('/', asyncHandler(async (req, res) => {
 }));
 
 
-router.delete('/:id', asyncHandler(async (req, res, next) => {
+router.delete('/:id', asyncHandler(async (req, res) => {
    const id = req.params.id;
    try {
        const review = await db.Review.findByPk(id);
@@ -38,6 +38,6 @@ router.delete('/:id', asyncHandler(async (req, res, next) => {
     const failure = "Delete failed."
     res.json({ failure })
    }
-})); 
+}));
 
 module.exports = router;

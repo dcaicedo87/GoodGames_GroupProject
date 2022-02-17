@@ -1,12 +1,11 @@
 window.addEventListener("load", async (event) => {
     //    const reviewButton = document.getElementById("game-info-review-button");
 
-    const grabDeleteButton = () => {
+    const grabDeleteButton = async () => {
         const deleteButtons = document.querySelectorAll(".game-info-review-delete");
         if (deleteButtons) {
             deleteButtons.forEach(deleteButton => {
                 deleteButton.addEventListener('click', async (e) => {
-                    // TODO Add fetch to delete from database and display on page
                     const id = e.target.id;
                     const realId = id.split('w');
                     try {
@@ -22,17 +21,36 @@ window.addEventListener("load", async (event) => {
                         }
                     } catch (err) {
                         console.log("Failed to delete review.");
-                    }
+                    };
                 });
             });
-        }
+        };
     };
+
+    const grabEditButton = async () => {
+        const editButtons = document.querySelectorAll(".game-info-review-edit");
+        if (editButtons) {
+            editButtons.forEach(editButton => {
+                editButton.addEventListener('click', async (e) => {
+                    const id = e.target.id;
+                    const realId = id.split('w');
+                });
+            });
+        };
+    };
+
+
+
+
+
+
+    grabEditButton();
     grabDeleteButton();
     const reviewButton = document.querySelector(".game-info-review-submit");
     reviewButton.addEventListener('click', async (e) => {
         const textArea = document.getElementById("game-info-review-textarea");
         const content = textArea.value;
-        const gameId = e.target.id
+        const gameId = e.target.id;
 
         const data = { content, gameId }
 
@@ -52,7 +70,7 @@ window.addEventListener("load", async (event) => {
             id,
             username,
             createdAt,
-        } = review
+        } = review;
 
         const newHTML = `
        <div id=review${id}>
@@ -70,19 +88,6 @@ window.addEventListener("load", async (event) => {
         textArea.value = "";
         grabDeleteButton();
     });
-
-    //    const deleteButtons = document.querySelectorAll(".game-info-review-delete");
-    //    if (deleteButtons) {
-    //        deleteButtons.forEach(deleteButton => {
-    //            deleteButton.addEventListener('click', async (e) => {
-    //                // TODO Add fetch to delete from database and display on page
-    //                 const id = e.target.id;
-    //                 const reviewDiv = document.getElementById(id);
-    //                 console.log(reviewDiv);
-    //                 reviewDiv.remove();
-    //            });
-    //        })
-    //    }
 
     const editButtons = document.querySelectorAll(".game-info-review-edit");
     if (editButtons) {
