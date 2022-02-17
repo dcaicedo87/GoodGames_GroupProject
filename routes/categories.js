@@ -8,7 +8,16 @@ const { Category, Game } = require("../db/models");
 router.get(
   "/",
   asyncHandler(async (req, res) => {
-    res.render("games-page");
+    const user = res.locals.user;
+    const games = await db.Game.findAll({ order: [["title", "ASC"]] });
+    res.render("games-page", { games, user });
+  })
+);
+
+router.get(
+  "/test",
+  asyncHandler(async (req, res) => {
+    res.render("BACKUP");
   })
 );
 
