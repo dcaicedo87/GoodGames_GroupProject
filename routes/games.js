@@ -30,17 +30,9 @@ router.get("/:id", csrfProtection, asyncHandler(async (req, res) => {
     } else {
       throw err
     }
-
   } catch (err) {
     res.send("404 Game not found :[");
   }
-
-
-
-  // console.log(game);
-  // console.log(reviews);
-
-
 }));
 
 module.exports = router;
