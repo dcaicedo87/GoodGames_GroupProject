@@ -24,7 +24,14 @@ block content
                 div
                     label(class="game-sidebar-gameshelf-label") GameShelf
                 div
-                    button(class="game-sidebar-gameshelf-button") +
+                    button(data-modal-target="#modal") Open Modal
+                    div(class="modal" id="modal")
+                        div(class="modal-header")
+                            div(class="title") Example Modal
+                            button(class="close-button" data-close-button="") &times;
+                        div(class="modal-body")
+                            | test
+                    div(id="overlay")
         div(class='game-container-wrapper')
             each game in games
                 div(class='game-container-list-div game-container-list-div-hover')
@@ -33,3 +40,4 @@ block content
                         div(class='game-container-game-title game-container-list-game-title')= `${game.title}`
                         form(action=`/games/${game.id}` method="get")
                         button(class="game-info-button" type="submit") Learn More
+    script(src='/javascripts/modal.js')

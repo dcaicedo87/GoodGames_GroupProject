@@ -1,0 +1,18 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel='stylesheet' href='/stylesheets/gamepage.css')
+
+    body
+        button(data-modal-target="#modal") Open Modal
+        div(class="modal" id="modal")
+            div(class="modal-header")
+                div(class="title") Example Modal
+                button(class="close-button" data-close-button="") &times;
+            div(class="modal-body")
+                | test
+        div(id="overlay")
+    script(src='/javascripts/modal.js')
