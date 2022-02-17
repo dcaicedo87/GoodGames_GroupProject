@@ -10,7 +10,7 @@ window.addEventListener("load", async (event) => {
                     const id = e.target.id;
                     console.log(id);
                     try {
-                        const res = await 
+                        // const res = await
                         const reviewDiv = document.getElementById(id);
                         reviewDiv.remove();
                     } catch {

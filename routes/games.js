@@ -31,7 +31,7 @@ router.get("/:id", csrfProtection, asyncHandler(async (req, res) => {
       throw err
     }
   } catch (err) {
-    res.send("404 Game not found :[");
+    res.render('error-pug.pug');
   }
 }));
 
