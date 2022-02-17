@@ -30,9 +30,6 @@ block content
                 div(class='game-container-list-div game-container-list-div-hover')
                     img(class='game-container-img' src= game.url, alt= `${game.title}`)
                     div(id='game-text-container-id' class='game-text-container')
-                        div(class='game-container-list-game-title')= `${game.title}`
-                    div(class='game-text-container')
-                        div(class='game-container-game-title')= `${game.title}`
+                        div(class='game-container-game-title game-container-list-game-title')= `${game.title}`
                         form(action=`/games/${game.id}` method="get")
                         button(class="game-info-button" type="submit") Learn More
-    script(src='/javascripts/category.js')
