@@ -16,6 +16,8 @@ img {
   /* transform: rotateX( 90deg)  translateZ(1em); */
 }
 
+.check-box-main
+
 .header {
   background-color: rgb(33, 0, 218);
   position: sticky;
@@ -100,7 +102,21 @@ img {
   max-width: 80%;
   color: black;
 }
-
+.modalGS {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    visibility: hidden;
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: white;
+    width: 500px;
+    max-width: 80%;
+    color: black;
+}
 .modal.active {
   transform: translate(-50%, -50%) scale(1);
   visibility: visible;
@@ -281,6 +297,11 @@ img {
 .game-sidebar-button:hover {
   color: rgb(238, 255, 6);
   background-color: rgba(183, 146, 218, 0.5);
+}
+
+.game-sidebar-button-select > button {
+    color: rgb(238, 255, 6);
+    background-color: rgba(183, 146, 218, 0.5);
 }
 
 .game-sidebar-button:active {

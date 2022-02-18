@@ -25,6 +25,15 @@ router.get(
     } else {
       res.render("games-page", { user, games, csrfToken: req.csrfToken() });
     }
+
+    // window.addEventListener("dblclick", function DoubleC(event) {
+    //     console.log('WOA',event);
+    //     let clickId = event.path[0].id;
+    //     document.getElementsByClassName('game-sidebar-button');
+
+
+
+    // })
   })
 );
 
