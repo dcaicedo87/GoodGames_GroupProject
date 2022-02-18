@@ -27,10 +27,6 @@ block content
             if user
                 div(class='game-sidebar-gameshelf-wrapper')
                     div
-<<<<<<< HEAD
-                    form(action=`/games/gameshelf/${gameshelf.id}` method='get')
-                        button(id=`${gameshelf.id}` class="game-sidebar-button")= `${gameshelf.name}`
-=======
                         label(class="game-sidebar-gameshelf-label") GameShelf
                     div(class="game-sidebar-gameshelf-modal-wrapper")
                         button(class = "game-sidebar-gameshelf-modal-button" data-modal-target="#modal") +
@@ -54,7 +50,6 @@ block content
                             button(class="game-sidebar-button")= `${gameshelf.name}`
             else
                 label(class='gameshelf-no-login') Please log in or register to see GameShelf
->>>>>>> main
         div(class='game-container-wrapper')
             each game in games
                 div(class='game-container-list-div game-container-list-div-hover')
