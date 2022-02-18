@@ -58,11 +58,9 @@ block content
                         div(class='game-container-game-title game-container-list-game-title')= `${game.title}`
                         form(action=`/games/${game.id}` method="get")
                             button(class="game-info-button" type="submit") Learn More
-                        select(name="Gameshelves" placeholder='Gameshelf' id='GS')
-                            each gameshel in gameshelves
-                                option(value=`/${gameshel.name}` class=`${game.id}` id=`${gameshel.id}`)= `${gameshel.name}`
-                        form(action=`/gameshelves/create` method="post")
-                            button(class="gameshelf-create-button" type='submit') +
-
-
-    script(src='/javascripts/modal.js')
+                        if (gameshelves)
+                            select(name="Gameshelves" placeholder='Gameshelf' id='GS')
+                                each gameshel in gameshelves
+                                    option(value=`/${gameshel.name}` class=`${game.id}` id=`${gameshel.id}`)= `${gameshel.name}`
+                            form(action=`/gameshelves/create` method="post")
+                                button(class="gameshelf-create-button" type='submit') +
