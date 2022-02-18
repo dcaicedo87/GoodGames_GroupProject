@@ -4,14 +4,23 @@ const { asyncHandler, csrfProtection } = require("./utils");
 const db = require("../db/models");
 const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
-const { loginUser, logoutUser } = require("../auth");
+const { loginUser, logoutUser, restoreUser } = require("../auth");
 
 const userValidators = [
     check("username")
         .exists({ checkFalsy: true })
         .withMessage("Please provide a value for Username")
         .isLength({ max: 100 })
-        .withMessage("First Name must not be more than 100 characters long."),
+        .withMessage("First Name must not be more than 100 characters long.")
+        .custom((value) => {
+            return db.User.findOne({ where: { username: value } }).then((user) => {
+                if (user) {
+                    return Promise.reject(
+                        "The provided Username is already in use by another account."
+                    );
+                }
+            });
+        }),
     check("email")
         .exists({ checkFalsy: true })
         .withMessage("Please provide a value for Email")

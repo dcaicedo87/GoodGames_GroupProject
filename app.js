@@ -12,7 +12,7 @@ const gamesRouter = require("./routes/games");
 const gameShelvesRouter = require("./routes/gameshelves");
 const categoriesRouter = require("./routes/categories");
 const { restoreUser } = require("./auth");
-const reviewsRouter = require("./routes/reviews")
+const reviewsRouter = require("./routes/reviews");
 const { sessionSecret } = require("./config");
 const app = express();
 //subtle changes//
@@ -38,7 +38,7 @@ app.use(
 
 app.use(restoreUser);
 
-// create Session table if it doesn't already exist
+// create Session table if it doesn't already exists
 store.sync();
 
 app.use("/", indexRouter);
@@ -61,7 +61,7 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render("error-404");
+  res.render("error-pug");
 });
 
 module.exports = app;
