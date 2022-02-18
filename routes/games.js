@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+var Sequelize = require('sequelize');
 const { asyncHandler, csrfProtection } = require("./utils");
 const db = require("../db/models");
 const { requireAuth } = require("../auth");
@@ -55,23 +56,33 @@ router.get("/:id", csrfProtection, asyncHandler(async (req, res) => {
 
 // }));
 
-router.get("/gameshelf/:id", async (req, res) => {
-  const id = req.params.id;
-  const user = res.locals.user;
-  const gameshelves = await db.Gameshelf.findAll({
-    where: { userId: `${user.id}` },
-  });
-  console.log(id);
-  const gamejoins = db.Gamejoin.findAll({ where: { gameShelfId: `${id}` } });
-  console.log(gamejoins);
+router.get("/gameshelf/:id", async(req, res) => {
+    const id = req.params.id
+    const user = res.locals.user;
+    var Op = Sequelize.Op;
+    const gamejoins = await db.Gamejoin.findAll({where: { gameShelfId: `${id}` }})
 
-  //for (let i = 0; )
-  //const games = db.Game.findAll({where: { gameShelfId: {[Op.in]: ARR]} }})
-  if (gamejoins) {
-    res.render("games-page", { gamejoins, games, user, gameshelves });
-  } else {
-    window.alert("This gameshelf is empty, Go fill it with some games DAMNIT!");
-  }
+
+    //const games = await db.Game.findAll({ where: { Id: {[Op.in]: arr } } } )
+    const gameshelves = await db.Gameshelf.findAll({where: { userId: `${user.id}` }})
+    let GameIdArr = [];
+
+    console.log(id, 'THIS TEXT IS FOR YOU TO FIND IT IN THE STACK OF SHIT!');
+    // console.log(gameJoinz);
+    // gameJoinzID = gameJoinz['fulfillmentValue']
+    // console.log(gameJoinzID)
+    for (let i = 0; i < gamejoins.length; i++) {
+        let currentGameID = gamejoins[i].gameId;
+
+        GameIdArr.push(currentGameID);
+
+    }
+
+    const games = await db.Game.findAll({where: { id: {[Op.in]: GameIdArr} }})
+
+    res.render("games-page", { gamejoins, games, user, gameshelves })
+
+
 });
 
 module.exports = router;
@@ -103,7 +114,7 @@ module.exports = router;
 //             await user.save();
 //             loginUser(req, res, user);
 //             const { userId } = req.session.auth;
-//             defaultGameShelves(req,res,userId);
+//             defaultGameJoinzes(req,res,userId);
 //             res.redirect("/games");
 //         } else {
 //             const errors = validatorErrors.array().map((error) => error.msg);
