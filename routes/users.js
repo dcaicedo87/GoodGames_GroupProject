@@ -11,7 +11,16 @@ const userValidators = [
         .exists({ checkFalsy: true })
         .withMessage("Please provide a value for Username")
         .isLength({ max: 100 })
-        .withMessage("First Name must not be more than 100 characters long."),
+        .withMessage("First Name must not be more than 100 characters long.")
+        .custom((value) => {
+            return db.User.findOne({ where: { username: value } }).then((user) => {
+                if (user) {
+                    return Promise.reject(
+                        "The provided Username is already in use by another account."
+                    );
+                }
+            });
+        }),
     check("email")
         .exists({ checkFalsy: true })
         .withMessage("Please provide a value for Email")
