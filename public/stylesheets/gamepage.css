@@ -5,7 +5,6 @@
   padding: 10px 10px 10px 10px;
 }
 
-
 body {
   background-image: url(https://drive.google.com/uc?id=1-PqyFYv0hiY_RQrktdnoRp3C_8MvvWkL);
 }
@@ -19,6 +18,9 @@ img {
 
 .header {
   background-color: rgb(33, 0, 218);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 .game-container-list-div {
   padding: 20px 50px 30px 0;
@@ -58,7 +60,13 @@ img {
   display: flex;
   justify-content: center;
   color: yellow;
-  border-bottom: 10px linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(208,0,60,1) 50%, rgba(255,0,65,1) 95%);
+  border-bottom: 10px
+    linear-gradient(
+      90deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(208, 0, 60, 1) 50%,
+      rgba(255, 0, 65, 1) 95%
+    );
 }
 
 .game-sidebar-gameshelf-list-wrapper {
@@ -104,6 +112,8 @@ img {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid black;
+  /* position: sticky;
+  top: 0; */
 }
 
 .modal-header .title {
@@ -179,6 +189,39 @@ img {
   color: #bbbbbb;
   border-color: #bbbbbb;
 }
+/* modal button */
+
+.game-sidebar-gameshelf-modal-button {
+  justify-content: center;
+  align-items: center;
+  padding: 0.35em 1.2em;
+  margin-top: 10%;
+  margin-left: 10%;
+  /* border-radius: 1em; */
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: rgb(111, 148, 110);
+  text-align: center;
+  transition: all 0.2s;
+  background-color: rgba(145, 119, 217, 0.294);
+}
+
+.game-sidebar-gameshelf-modal-button:hover {
+  color: rgb(238, 255, 6);
+  background-color: rgba(183, 146, 218, 0.5);
+}
+
+.game-sidebar-gameshelf-modal-button:active {
+  color: #bbbbbb;
+  border-color: #bbbbbb;
+}
+
+.game-sidebar-categories {
+  position: sticky;
+  left: 0;
+}
 
 .game-sidebar-categories-ul {
   font-size: xx-large;
@@ -188,17 +231,19 @@ img {
 }
 
 .game-sidebar-ul > a {
-  /* margin: 5%; */
   text-decoration: none;
 }
 
 .game-sidebar-wrapper {
+  display: flex;
+  flex-direction: column;
   background-color: rgb(131, 9, 131);
   color: white;
   position: relative;
   left: 0;
-  min-width: 18vh;
-  max-width: 18vh;
+  min-width: 20vh;
+  max-width: 20vh;
+  min-height: 100vh;
 }
 
 .game-container-list-div-hover > div {
