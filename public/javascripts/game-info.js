@@ -118,7 +118,7 @@ window.addEventListener("load", async (event) => {
         const gameId = e.target.id;
 
         const data = { content, gameId }
-
+        
         const res = await fetch("http://localhost:8080/reviews", {
             method: "POST",
             headers: {

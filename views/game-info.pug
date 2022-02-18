@@ -23,6 +23,8 @@ block content
                                             button(class="game-info-review-delete" id=`review${review.id}`) Delete
                                             button(class="game-info-review-edit editDisplay" id=`review${review.id}`) Edit
                                     .game-info-review-underline
+                    else
+                        .game-info-review-wrapper(id="reviewWrapper")
                     form(action="" method="post" onsubmit="event.preventDefault();")
                         p.game-info-review-label.fontClass  Leave a review
                         if locals.authenticated
