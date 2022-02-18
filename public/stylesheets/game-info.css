@@ -53,6 +53,8 @@
 }
 .game-info-review-textarea {
   margin: 0px 20px 10px 20px;
+  border-radius: 10px;
+  padding: 10px;
 }
 .fontClass {
   font-family: "Roboto", sans-serif;
@@ -117,6 +119,7 @@
   margin: 20px;
   border-radius: 10px;
   min-width: 300px;
+  border-radius: 20px;
 }
 
 .game-info-p-wrapper {
