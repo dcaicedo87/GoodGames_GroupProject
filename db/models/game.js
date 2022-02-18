@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     developer: DataTypes.STRING,
     metaScore: DataTypes.INTEGER,
     genreId: DataTypes.INTEGER,
-    url: DataTypes.STRING
+    url: DataTypes.STRING,
+    description: DataTypes.TEXT
   }, {});
   Game.associate = function(models) {
     Game.belongsTo(models.Category, { foreignKey: 'genreId' });

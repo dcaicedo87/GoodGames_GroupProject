@@ -17,7 +17,6 @@ html
         .userLinks
           if user
             p.usernameText Hello, #{user.username}
-          if locals.authenticated
             form(action="/users/logout" method="post")
               button(class="userNavButtons" type="submit") Logout
           else
