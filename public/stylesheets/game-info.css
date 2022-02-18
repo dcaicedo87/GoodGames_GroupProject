@@ -7,9 +7,16 @@
   border-radius: 9px;
   width: 50vw;
 }
-
+.titleFont {
+  font-weight: bold;
+  font-size: 20px;
+}
 .game-info-title-wrapper {
   display: inline-block;
+  background-color: white;
+  border-radius: 10px;
+  padding: 5px 30px 5px 30px;
+  margin: 20px 0px 20px 0px;
 }
 .game-title {
   margin-top: 40px;
@@ -26,6 +33,7 @@
   border-radius: 9px;
   padding: 10px;
   background-color: white;
+  margin: 0px 20px 0px 20px;
 }
 .game-info-page {
   background-color: rgb(89, 61, 163);
@@ -44,10 +52,12 @@
   display: block;
 }
 .game-info-review-textarea {
-  margin-top: 10px;
+  margin: 0px 20px 10px 20px;
 }
 .fontClass {
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+
 }
 .game-info-review-delete {
   margin-bottom: 10px;
@@ -99,4 +109,38 @@
   color: yellow;
   font-size: 20px;
   font-weight: bold;
+}
+
+.game-info-text-wrapper {
+  background-color: white;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  min-width: 300px;
+}
+
+.game-info-p-wrapper {
+  display: inline-block;
+  /* background-color: white; */
+  border-radius: 0px 0px 10px 10px;
+  padding: 7px;
+}
+.game-info-dev-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 300px 20px 300px;
+  min-width: 350px;
+}
+.game-info-wrapper {
+  min-width: 930px;
+}
+.fontClass {
+  font-weight: bold;
+}
+.game-info-review-label {
+  margin-left: 10px;
 }
