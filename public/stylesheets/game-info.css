@@ -145,5 +145,6 @@
   font-weight: bold;
 }
 .game-info-review-label {
-  margin-left: 10px;
+  margin-left: 20px;
+  padding: 10px
 }
