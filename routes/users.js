@@ -4,7 +4,7 @@ const { asyncHandler, csrfProtection } = require("./utils");
 const db = require("../db/models");
 const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
-const { loginUser, logoutUser } = require("../auth");
+const { loginUser, logoutUser, restoreUser } = require("../auth");
 
 const userValidators = [
     check("username")
