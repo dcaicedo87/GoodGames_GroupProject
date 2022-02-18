@@ -10,7 +10,9 @@ router.get(
   asyncHandler(async (req, res) => {
     const user = res.locals.user;
     const games = await db.Game.findAll({ order: [["title", "ASC"]] });
-    const gameshelves = await db.Gameshelf.findAll({where: { userId: `${user.id}` }})
+    const gameshelves = await db.Gameshelf.findAll({
+      where: { userId: `${user.id}` },
+    });
 
     res.render("games-page", { games, user, gameshelves });
   })
@@ -26,14 +28,24 @@ router.get(
 router.get("/:id", async (req, res) => {
   const id = req.params.id;
   const user = res.locals.user;
-  const gameshelves = await db.Gameshelf.findAll({where: { userId: `${user.id}` }})
-  const games = await db.Game.findAll({
-    where: {
-      genreId: id,
-    },
-  });
-
-  res.render("games-page", { games, user, gameshelves });
+  if (user) {
+    const gameshelves = await db.Gameshelf.findAll({
+      where: { userId: `${user.id}` },
+    });
+    const games = await db.Game.findAll({
+      where: {
+        genreId: id,
+      },
+    });
+    res.render("games-page", { games, user, gameshelves });
+  } else {
+    const games = await db.Game.findAll({
+      where: {
+        genreId: id,
+      },
+    });
+    res.render("games-page", { games, user });
+  }
 });
 
 module.exports = router;
