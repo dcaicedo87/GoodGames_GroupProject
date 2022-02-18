@@ -3,7 +3,6 @@ var router = express.Router();
 var Sequelize = require('sequelize');
 const { asyncHandler, csrfProtection } = require("./utils");
 const db = require("../db/models");
-// const Review = require('../db/models')
 const { requireAuth } = require("../auth");
 const { Review, User } = require("../db/models");
 
@@ -29,32 +28,29 @@ router.get(
   })
 );
 
-router.get("/:id", async (req, res) => {
-  const id = req.params.id;
+router.get("/:id", csrfProtection, asyncHandler(async (req, res) => {
+  const id = req.params.id
   const user = res.locals.user;
-  const game = await db.Game.findByPk(id, {
-    include: {
-      model: Review,
+  try {
+    const game = await db.Game.findByPk(id)
+    const reviews = await db.Review.findAll({
       where: {
-        gameId: id,
+        gameId: id
       },
+      order: [['createdAt', 'ASC']],
       include: {
         model: User,
-        where: {
-          id,
-        },
-      },
-  }})
-
-
-const reviewContent = game.Reviews[0].content;
-const username = game.Reviews[0].User.username;
-
-
-
-  // const reviewContent = game.Reviews[0].content;
-  res.render("game-info", { game, reviewContent, username });
-});
+      }
+    });
+    if (game) {
+      res.render("game-info", { game, user, reviews, csrfToken: req.csrfToken() })
+    } else {
+      throw err
+    }
+  } catch (err) {
+    res.render('error-pug');
+  }
+}));
 
 // router.get("/gameshelf/create", csrfProtection, ((req, res) => {
 
