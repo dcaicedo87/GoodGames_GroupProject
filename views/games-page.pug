@@ -31,7 +31,7 @@ block content
                     div(class="game-sidebar-gameshelf-modal-wrapper")
                         if (inGameShelf)
                             form(action=`/gameshelves/delete` method="post")
-                                button(id=`remove-gameshelf` class="gameshelf-remove-button" type='submit') -
+                                button(id=`remove-gameshelf` class="gameshelf-remove-button gs-delete-btn" type='submit') -
                         else
                             button(class = "game-sidebar-gameshelf-modal-button" data-modal-target="#modal") +
                             div(class="modal" id="modal")
