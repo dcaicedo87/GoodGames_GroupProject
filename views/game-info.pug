@@ -5,12 +5,19 @@ block content
         .game-info-body
             .game-info-wrapper
                 .game-info-title-wrapper
-                    p.fontClass  #{game.title}
+                    p.titleFont  #{game.title}
                 .game-info-image-wrapper
                     img(src=`${game.url}`, alt=`${game.title}`)
                 .game-info-description-wrapper
-                    p.game-info-developer.fontClass Developer: #{game.developer}
-                    p.game-info-metaScore.fontClass MetaScore: #{game.metaScore}
+                    .game-info-dev-wrapper
+                        .game-info-p-wrapper
+                            p.game-info-developer.fontClass Developer: #{game.developer}
+                        .game-info-p-wrapper
+                            p.game-info-releaseDate.fontClass Release Date: #{game.releaseDate}
+                        .game-info-p-wrapper
+                            p.game-info-metaScore.fontClass MetaScore: #{game.metaScore}
+                    .game-info-text-wrapper
+                        p.game-info-description.fontClass #{game.description}
                     if reviews.length > 0
                         .game-info-review-wrapper(id="reviewWrapper")
                             each review in reviews
@@ -27,7 +34,7 @@ block content
                         .game-info-review-wrapper(id="reviewWrapper")
                     div(class="review-form-wrapper")
                         form(action="" method="post" onsubmit="event.preventDefault();")
-                            p.game-info-review-label.fontClass  Leave a review
+                            p.game-info-review-label.fontClass  Leave a review:
                             if locals.authenticated
                                 input(type="hidden" name="_csrf" value=csrfToken)
                                 textarea(class="game-info-review-textarea" id="game-info-review-textarea" name="content" rows="4" cols="70")
