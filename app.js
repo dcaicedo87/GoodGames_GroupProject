@@ -20,18 +20,18 @@ const app = express();
 app.set("view engine", "pug");
 
 
-const corsOptions = {
-  origin: (origin, callback) => {
-    callback(null, true);
-  },
-  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-  allowedHeaders: ["Access-Control-Allow-Origin", "Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"],
-};
+// const corsOptions = {
+//   origin: (origin, callback) => {
+//     callback(null, true);
+//   },
+//   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+//   allowedHeaders: ["Access-Control-Allow-Origin", "Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"],
+// };
 
 
 // app.options("*", cors(corsOptions));
-app.options("*", cors());
-app.use(cors(corsOptions));
+// app.options("*", cors());
+// app.use(cors(corsOptions));
 
 app.use(logger("dev"));
 app.use(express.json());
