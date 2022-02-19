@@ -14,22 +14,32 @@ const categoriesRouter = require("./routes/categories");
 const { restoreUser } = require("./auth");
 const reviewsRouter = require("./routes/reviews");
 const { sessionSecret } = require("./config");
-const cors = require('cors');
+const cors = require("cors");
 const app = express();
 //subtle changes//
 app.set("view engine", "pug");
 
-const corsOptions = {
-  origin: (origin, callback) => {
-    callback(null, true);
-  },
-  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-  allowedHeaders: ["Access-Control-Allow-Origin", "Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"],
-  credentials: true
-};
+// Anthony's code
+// const corsOptions = {
+//   origin: (origin, callback) => {
+//     callback(null, true);
+//   },
+//   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+//   allowedHeaders: ["Access-Control-Allow-Origin", "Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"],
+//   credentials: true
+// };
 
-app.options('*', cors(corsOptions));
-app.use(cors(corsOptions));
+// Daniel's code
+app.use(
+  cors({
+    credentials: true,
+    origin: ["http://localhost:8080", "https://aa-ggames.herokuapp.com/"],
+  })
+);
+
+// app.options("*", cors(corsOptions));
+app.options("*", cors());
+// app.use(cors(corsOptions));
 
 app.use(logger("dev"));
 app.use(express.json());
