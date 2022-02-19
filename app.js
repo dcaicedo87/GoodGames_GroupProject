@@ -14,10 +14,12 @@ const categoriesRouter = require("./routes/categories");
 const { restoreUser } = require("./auth");
 const reviewsRouter = require("./routes/reviews");
 const { sessionSecret } = require("./config");
+const cors = require('cors');
 const app = express();
 //subtle changes//
 app.set("view engine", "pug");
 
+app.use(cors({ origin: "https://aa-ggames.herokuapp.com/" }));
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
