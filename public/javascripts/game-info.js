@@ -7,13 +7,10 @@ window.addEventListener("load", async (event) => {
           const id = e.target.id;
           const realId = id.split("w");
           try {
-            const res = await fetch(
-              `http://localhost:8080/reviews/${realId[1]}`,
-              {
-                mode: "cors",
-                method: "DELETE",
-              }
-            );
+            const res = await fetch(`/reviews/${realId[1]}`, {
+              mode: "cors",
+              method: "DELETE",
+            });
             const response = await res.json();
             if (response.success) {
               const reviewDiv = document.getElementById(id);
@@ -84,17 +81,14 @@ window.addEventListener("load", async (event) => {
             const content = newReview.value;
             const data = { content };
             try {
-              const res = await fetch(
-                `http://localhost:8080/reviews/${realId[1]}`,
-                {
-                  method: "PUT",
-                  mode: "cors",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify(data),
-                }
-              );
+              const res = await fetch(`/reviews/${realId[1]}`, {
+                method: "PUT",
+                mode: "cors",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+              });
               const response = await res.json();
               console.log(response);
             } catch (err) {
