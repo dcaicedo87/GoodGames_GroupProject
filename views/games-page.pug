@@ -29,24 +29,28 @@ block content
                     div
                         label(class="game-sidebar-gameshelf-label") GameShelf
                     div(class="game-sidebar-gameshelf-modal-wrapper")
-                        button(class = "game-sidebar-gameshelf-modal-button" data-modal-target="#modal") +
-                        div(class="modal" id="modal")
-                            div(class="modal-header")
-                                div(class="title") GameShelf
-                                button(class="close-button" data-close-button="") &times;
-                            div(class="modal-body")
-                                | Create name of GameShelf
-                                form(action='/gameshelves' method="post")
-                                    input(type='hidden' name='_csrf' value=csrfToken)
-                                    label Name
-                                    +field("", "gameShelfName", "")
-                                    button(type='submit') Submit
-                        div(id="overlay")
+                        if (inGameShelf)
+                            form(action=`/gameshelves/delete` method="post")
+                                button(id=`remove-gameshelf` class="gameshelf-remove-button" type='submit') -
+                        else
+                            button(class = "game-sidebar-gameshelf-modal-button" data-modal-target="#modal") +
+                            div(class="modal" id="modal")
+                                div(class="modal-header")
+                                    div(class="title") GameShelf
+                                    button(class="close-button" data-close-button="") &times;
+                                div(class="modal-body")
+                                    | Create name of GameShelf
+                                    form(action='/gameshelves' method="post")
+                                        input(type='hidden' name='_csrf' value=csrfToken)
+                                        label Name
+                                        +field("", "gameShelfName", "")
+                                        button(type='submit') Submit
+                            div(id="overlay")
                 div(class="game-sidebar-gameshelf-list-wrapper")
                 if (gameshelves)
                     each gameshelf in gameshelves
-                        div
-                        form(action=`/games/gameshelf/${gameshelf.id}` method='get')
+                        div(class='game-shelf-sidebar-div')
+                        form(action=`/gameshelves/${gameshelf.id}` method='get')
                             button(class="game-sidebar-button")= `${gameshelf.name}`
             else
                 label(class='gameshelf-no-login') Please log in or register to see GameShelf
@@ -59,8 +63,17 @@ block content
                         form(action=`/games/${game.id}` method="get")
                             button(class="game-info-button" type="submit") Learn More
                         if (gameshelves)
-                            select(name="Gameshelves" placeholder='Gameshelf' id='GS')
-                                each gameshel in gameshelves
-                                    option(value=`/${gameshel.name}` class=`${game.id}` id=`${gameshel.id}`)= `${gameshel.name}`
-                            form(action=`/gameshelves/create` method="post")
-                                button(class="gameshelf-create-button" type='submit') +
+                            if (inGameShelf)
+                                form(action=`/gameshelves/edit` method="post")
+                                    input(type="hidden" name="_csrf" value=csrfToken)
+                                    select(name="Gameshelves" placeholder='Gameshelf' id='GS')
+                                        each gameshel in gameshelves
+                                            option(name=`GameshelfName` value=`${gameshel.id}-${game.id}` class=`${game.id}` id=`${gameshel.id}`)= `${gameshel.name}`
+                                    button(id=`add-button-${game.id}` class="gameshelf-create-button" type='submit') -
+                            else
+                                form(action=`/gameshelves/create` method="post")
+                                    input(type="hidden" name="_csrf" value=csrfToken)
+                                    select(name="Gameshelves" placeholder='Gameshelf' id='GS')
+                                        each gameshel in gameshelves
+                                            option(name=`GameshelfName` value=`${gameshel.id}-${game.id}` class=`${game.id}` id=`${gameshel.id}`)= `${gameshel.name}`
+                                    button(id=`delete-button-${game.id}` class="gameshelf-delete-game-button" type='submit') +

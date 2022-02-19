@@ -25,7 +25,7 @@ router.get(
   })
 );
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", csrfProtection, async (req, res) => {
   const id = req.params.id;
   const user = res.locals.user;
   if (user) {
@@ -37,14 +37,14 @@ router.get("/:id", async (req, res) => {
         genreId: id,
       },
     });
-    res.render("games-page", { games, user, gameshelves });
+    res.render("games-page", { games, user, gameshelves, csrfToken: req.csrfToken() });
   } else {
     const games = await db.Game.findAll({
       where: {
         genreId: id,
       },
     });
-    res.render("games-page", { games, user });
+    res.render("games-page", { games, user, csrfToken: req.csrfToken() });
   }
 });
 
