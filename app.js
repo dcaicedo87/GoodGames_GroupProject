@@ -19,27 +19,19 @@ const app = express();
 //subtle changes//
 app.set("view engine", "pug");
 
-// Anthony's code
-// const corsOptions = {
-//   origin: (origin, callback) => {
-//     callback(null, true);
-//   },
-//   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-//   allowedHeaders: ["Access-Control-Allow-Origin", "Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"],
-//   credentials: true
-// };
 
-// Daniel's code
-app.use(
-  cors({
-    credentials: true,
-    origin: ["http://localhost:8080", "https://aa-ggames.herokuapp.com/"],
-  })
-);
+const corsOptions = {
+  origin: (origin, callback) => {
+    callback(null, true);
+  },
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  allowedHeaders: ["Access-Control-Allow-Origin", "Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"],
+};
+
 
 // app.options("*", cors(corsOptions));
 app.options("*", cors());
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 app.use(logger("dev"));
 app.use(express.json());
