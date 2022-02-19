@@ -3,8 +3,9 @@ var router = express.Router();
 const { check, validationResult } = require("express-validator");
 const { asyncHandler, csrfProtection } = require("./utils");
 const db = require("../db/models");
+const cors = require('cors');
 
-router.post('/', asyncHandler(async (req, res) => {
+router.post('/', cors(), asyncHandler(async (req, res) => {
     const {
         content,
         gameId
@@ -23,7 +24,7 @@ router.post('/', asyncHandler(async (req, res) => {
 }));
 
 
-router.delete('/:id', asyncHandler(async (req, res) => {
+router.delete('/:id', cors(), asyncHandler(async (req, res) => {
    const id = req.params.id;
    try {
        const review = await db.Review.findByPk(id);
@@ -40,7 +41,7 @@ router.delete('/:id', asyncHandler(async (req, res) => {
    }
 }));
 
-router.put('/:id', asyncHandler(async (req, res) => {
+router.put('/:id', cors(), asyncHandler(async (req, res) => {
     const id = req.params.id;
     const { content } = req.body;
     try {
