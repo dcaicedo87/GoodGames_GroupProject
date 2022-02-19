@@ -9,6 +9,7 @@ window.addEventListener("load", async (event) => {
                     const realId = id.split('w');
                     try {
                         const res = await fetch(`http://localhost:8080/reviews/${realId[1]}`, {
+                            mode: "cors",
                             method: "DELETE",
                         });
                         const response = await res.json();
@@ -78,6 +79,7 @@ window.addEventListener("load", async (event) => {
                         try {
                             const res = await fetch(`http://localhost:8080/reviews/${realId[1]}`, {
                                 method: "PUT",
+                                mode: "cors",
                                 headers: {
                                     "Content-Type": "application/json"
                                 },
@@ -118,9 +120,10 @@ window.addEventListener("load", async (event) => {
         const gameId = e.target.id;
 
         const data = { content, gameId }
-        
+
         const res = await fetch("http://localhost:8080/reviews", {
             method: "POST",
+            mode: "cors",
             headers: {
                 "Content-Type": "application/json",
             },
