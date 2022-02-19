@@ -4,8 +4,12 @@ const { check, validationResult } = require("express-validator");
 const { asyncHandler, csrfProtection } = require("./utils");
 const db = require("../db/models");
 const cors = require('cors');
+var corsOptions = {
+    origin: 'https://aa-ggames.herokuapp.com',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }
 
-router.post('/', cors(), asyncHandler(async (req, res) => {
+router.post('/', cors(corsOptions), asyncHandler(async (req, res) => {
     const {
         content,
         gameId
@@ -24,7 +28,7 @@ router.post('/', cors(), asyncHandler(async (req, res) => {
 }));
 
 
-router.delete('/:id', cors(), asyncHandler(async (req, res) => {
+router.delete('/:id', cors(corsOptions), asyncHandler(async (req, res) => {
    const id = req.params.id;
    try {
        const review = await db.Review.findByPk(id);
@@ -41,7 +45,7 @@ router.delete('/:id', cors(), asyncHandler(async (req, res) => {
    }
 }));
 
-router.put('/:id', cors(), asyncHandler(async (req, res) => {
+router.put('/:id', cors(corsOptions), asyncHandler(async (req, res) => {
     const id = req.params.id;
     const { content } = req.body;
     try {
