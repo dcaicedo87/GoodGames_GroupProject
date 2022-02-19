@@ -120,67 +120,70 @@ window.addEventListener("load", async (event) => {
         const gameId = e.target.id;
 
         const data = { content, gameId }
+        try {
+            const res = await fetch("http://localhost:8080/reviews", {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data)
+            });
 
-        const res = await fetch("http://localhost:8080/reviews", {
-            method: "POST",
-            mode: "cors",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data)
-        });
+            const newReview = await res.json();
+            const review = newReview.newReview;
+            const {
+                id,
+                username,
+                createdAt,
+            } = review;
+            // CREATING DIV
+            const div = document.createElement("div")
+            div.setAttribute("id", `review${id}`);
+            // CREATING FIRST P
+            const p1 = document.createElement("p")
+            p1.setAttribute("class", "game-info-review-content fontClass");
+            p1.innerText = username;
+            // CREATING SECOND P
+            const p2 = document.createElement("p")
+            p2.setAttribute("class", "game-info-review-content fontClass");
+            p2.innerText = content;
+            // CREATING THIRD P
+            const p3 = document.createElement("p")
+            p3.setAttribute("class", "game-info-review-timestamp fontClass");
+            p3.innerText = createdAt;
+            // CREATING DELETE BUTTON
+            const deleteBtn = document.createElement("button")
+            deleteBtn.setAttribute("class", "game-info-review-delete")
+            deleteBtn.setAttribute("id", `review${id}`);
+            deleteBtn.innerText = "Delete";
+            // CREATING EDIT BUTTON
+            const editBtn = document.createElement("button");
+            editBtn.setAttribute("class", "game-info-review-edit")
+            editBtn.setAttribute("id", `review${id}`);
+            editBtn.innerText = "Edit";
+            // CREATING UNDERLINE DIV
+            const underLine = document.createElement("div")
+            underLine.setAttribute("class", "game-info-review-underline");
+            // APPENDING ALL ELEMENTS TO DIV CONTAINER
+            div.appendChild(p1);
+            div.appendChild(p2);
+            div.appendChild(p3);
+            div.appendChild(deleteBtn);
+            div.appendChild(editBtn);
+            div.appendChild(underLine);
 
-        const newReview = await res.json();
+            const reviewWrapper = document.getElementById("reviewWrapper");
+            reviewWrapper.appendChild(div);
+            textArea.value = "";
+            grabDeleteButton();
+            grabEditButton();
+        } catch (err) {
+            console.log("failed to fetch");
+        }
 
-        const review = newReview.newReview;
 
-        const {
-            id,
-            username,
-            createdAt,
-        } = review;
 
-        // CREATING DIV
-        const div = document.createElement("div")
-        div.setAttribute("id", `review${id}`);
-        // CREATING FIRST P
-        const p1 = document.createElement("p")
-        p1.setAttribute("class", "game-info-review-content fontClass");
-        p1.innerText = username;
-        // CREATING SECOND P
-        const p2 = document.createElement("p")
-        p2.setAttribute("class", "game-info-review-content fontClass");
-        p2.innerText = content;
-        // CREATING THIRD P
-        const p3 = document.createElement("p")
-        p3.setAttribute("class", "game-info-review-timestamp fontClass");
-        p3.innerText = createdAt;
-        // CREATING DELETE BUTTON
-        const deleteBtn = document.createElement("button")
-        deleteBtn.setAttribute("class", "game-info-review-delete")
-        deleteBtn.setAttribute("id", `review${id}`);
-        deleteBtn.innerText = "Delete";
-        // CREATING EDIT BUTTON
-        const editBtn = document.createElement("button");
-        editBtn.setAttribute("class", "game-info-review-edit")
-        editBtn.setAttribute("id", `review${id}`);
-        editBtn.innerText = "Edit";
-        // CREATING UNDERLINE DIV
-        const underLine = document.createElement("div")
-        underLine.setAttribute("class", "game-info-review-underline");
-        // APPENDING ALL ELEMENTS TO DIV CONTAINER
-        div.appendChild(p1);
-        div.appendChild(p2);
-        div.appendChild(p3);
-        div.appendChild(deleteBtn);
-        div.appendChild(editBtn);
-        div.appendChild(underLine);
-
-        const reviewWrapper = document.getElementById("reviewWrapper");
-        reviewWrapper.appendChild(div);
-        textArea.value = "";
-        grabDeleteButton();
-        grabEditButton();
     });
 
 });
