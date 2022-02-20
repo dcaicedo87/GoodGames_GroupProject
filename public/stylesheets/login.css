@@ -1,4 +1,15 @@
-.logInForm-container {
+/* .logInForm-container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-image: url("https://drive.google.com/uc?id=1tApIV2-VJsFNd78ZNH4E-4tK9FLMIbeY");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin: 0px;
+} */
+.logInForm-body {
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -7,8 +18,8 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  margin: 0px;
 }
-
 .logInForm {
   display: flex;
   justify-content: center;
@@ -16,7 +27,7 @@
   height: 50vh;
   background-color: rgba(137, 43, 226, 0.397);
   border: solid 1px;
-  width: 55%;
+  width: 40%;
 }
 
 .validator-error-summary-wrapper {

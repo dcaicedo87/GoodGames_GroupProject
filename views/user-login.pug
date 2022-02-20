@@ -8,18 +8,17 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         link(rel='stylesheet' href='/stylesheets/login.css')
         title Login
-    body
-        div(class='logInForm-container')
-            div(class='logInForm')
-                form(action="/users/login" method="post")
-                    +validationErrorSummary(errors)
-                    input(type="hidden" name="_csrf" value=csrfToken)
-                    lable(class="username-label") Username
-                    +field("", "username", "")
-                    lable(class="password-label") Password
-                    +field("","password", "", 'password')
-                    div(class="loginBtnContainer")
-                        button(class="loginBtn" type="submit") Login
-                    div(class='cancelBtnContainer')
-                        a(href="/")
-                            button(class='cancelBtn' type="button") Cancel
+    body(class="logInForm-body")
+        div(class='logInForm')
+            form(action="/users/login" method="post")
+                +validationErrorSummary(errors)
+                input(type="hidden" name="_csrf" value=csrfToken)
+                lable(class="username-label") Username
+                +field("", "username", "")
+                lable(class="password-label") Password
+                +field("","password", "", 'password')
+                div(class="loginBtnContainer")
+                    button(class="loginBtn" type="submit") Login
+                div(class='cancelBtnContainer')
+                    a(href="/")
+                        button(class='cancelBtn' type="button") Cancel
