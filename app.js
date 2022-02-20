@@ -30,7 +30,6 @@ app.set("view engine", "pug");
 // app.options("*", cors(corsOptions));
 
 // app.options("*", cors());
-
 // app.use(cors(corsOptions));
 
 app.use(logger("dev"));
