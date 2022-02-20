@@ -19,7 +19,6 @@ const app = express();
 //subtle changes//
 app.set("view engine", "pug");
 
-
 // const corsOptions = {
 //   origin: (origin, callback) => {
 //     callback(null, true);
@@ -28,9 +27,10 @@ app.set("view engine", "pug");
 //   allowedHeaders: ["Access-Control-Allow-Origin", "Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"],
 // };
 
-
 // app.options("*", cors(corsOptions));
+
 // app.options("*", cors());
+
 // app.use(cors(corsOptions));
 
 app.use(logger("dev"));
