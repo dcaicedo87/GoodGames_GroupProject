@@ -6,6 +6,7 @@
   background-color: rgb(214, 214, 214);
   border-radius: 9px;
   width: 50vw;
+  overflow: hidden;
 }
 .titleFont {
   font-weight: bold;
@@ -147,4 +148,7 @@
 .game-info-review-label {
   margin-left: 20px;
   padding: 10px
+}
+.buttonText {
+  display: inline-block;
 }
