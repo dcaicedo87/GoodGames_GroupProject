@@ -11,6 +11,7 @@ h1 {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  margin: 0px;
 }
 .ggLogoSplash {
   width: 400px;

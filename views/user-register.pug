@@ -8,22 +8,21 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         link(rel='stylesheet' href='/stylesheets/register.css')
         title Register
-    body
-        div(class='register-form-container')
-            div(class='register-form')
-                form(action="/users/register" method="post")
-                    +validationErrorSummary(errors)
-                    input(type="hidden" name="_csrf" value=csrfToken)
-                    lable(class="username-label") Username
-                    +field("", "username", user.username)
-                    lable(class="email-label") Email
-                    +field("", "email", user.email)
-                    lable(class="password-label") Password
-                    +field("","password", user.password, "password")
-                    lable(class="confirm-password-label") Confirm Password
-                    +field("", "confirmPassword", "", "password")
-                    div(class="registerBtnContainer")
-                        button(class="registerBtn" type="submit") Register
-                    div(class='cancelBtnContainer')
-                        a(href="/")
-                            button(class='cancelBtn' type="button") Cancel
+    body(class='register-form-container')
+        div(class='register-form')
+            form(action="/users/register" method="post")
+                +validationErrorSummary(errors)
+                input(type="hidden" name="_csrf" value=csrfToken)
+                lable(class="username-label") Username
+                +field("", "username", user.username)
+                lable(class="email-label") Email
+                +field("", "email", user.email)
+                lable(class="password-label") Password
+                +field("","password", user.password, "password")
+                lable(class="confirm-password-label") Confirm Password
+                +field("", "confirmPassword", "", "password")
+                div(class="registerBtnContainer")
+                    button(class="registerBtn" type="submit") Register
+                div(class='cancelBtnContainer')
+                    a(href="/")
+                        button(class='cancelBtn' type="button") Cancel
