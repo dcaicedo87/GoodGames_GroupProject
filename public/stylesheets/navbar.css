@@ -1,5 +1,24 @@
 .ggLogo {
-    height: 60px;
+    height: 80px;
+    z-index: 1;
+    position: relative;
+    top: 0;
+    left: 0;
+    /* border: 1px red solid; */
+}
+.ggLogo-Hover {
+    height: 80px;
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 1%;
+
+    /* border: 1px green solid; */
+}
+.ggLogo-Hover:hover {
+    opacity:100%;
+    transition:opacity 0.5s;
 }
 .header {
     display: flex;
@@ -11,6 +30,7 @@
     display: inline-block;
     margin: 7px 0px 7px 0;
     justify-self: center;
+    position: relative;
 }
 .userNavButtons {
     background-color: rgba(0, 0, 0, 0);
